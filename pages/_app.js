@@ -3,8 +3,8 @@ import "typeface-open-sans";
 import "typeface-merriweather";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "styles/sidebar.css";
-import '../styles/my-swiper.scss';
-import 'swiper/swiper.scss';
+// import '../styles/my-swiper.css';
+// import 'swiper/swiper.scss';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'

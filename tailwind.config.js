@@ -61,12 +61,7 @@ module.exports = {
     }),
   },
   variants: {},
-  plugins: [
-    require("@tailwindcss/typography"),
-    require( 'tailwindcss' ),
-		require( 'precss' ),
-		require( 'autoprefixer' )
-  ],
+  plugins: [require("@tailwindcss/typography")],
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,

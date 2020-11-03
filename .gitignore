@@ -10,7 +10,6 @@
 
 # next.js
 /.next/
-/out/
 
 # production
 /build
@@ -29,4 +28,4 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-./idea
+/.idea/
