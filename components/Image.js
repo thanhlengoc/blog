@@ -1,3 +1,4 @@
+import React from "react";
 import "lazysizes";
 
 export default function Image({ alt, src, previewSrc, webpSrc, className }) {

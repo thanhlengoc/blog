@@ -1,9 +1,9 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from "./Image";
-import SimpleSwiper from "./SimpleSwiper"
+// import Link from 'next/link'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import Image from "./Image";
+// import SimpleSwiper from "./SimpleSwiper"
 
 const bannerStyle = {
     width: '100%',

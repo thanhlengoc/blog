@@ -1,5 +1,5 @@
+import React from "react";
 import clsx from "clsx";
-
 import Image from "./Image";
 import { getSiteMetaData } from "utils/helpers";
 

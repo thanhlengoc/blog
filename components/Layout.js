@@ -1,10 +1,7 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Header from './Header';
-import { Col, Row, FormControl, Form, InputGroup } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Footer2 from "./Footer2";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Banner from "./Banner";
 import Sidebar from "./Sidebar"
 

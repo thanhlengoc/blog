@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar,Nav,Form,FormControl,Button, Col, Row } from 'react-bootstrap'
+import { Navbar,Nav,Form,FormControl,Button } from 'react-bootstrap'
 import Image from "./Image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
