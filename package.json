@@ -23,13 +23,13 @@
     "next": "10.0.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
-    "postcss-preset-env": "^6.7.0",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "17.0.1",
     "react-id-swiper": "^4.0.0",
     "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "^15.2.1",
+    "sass": "^1.28.0",
     "swiper": "^5.4.1",
     "typeface-merriweather": "^1.1.13",
     "typeface-open-sans": "^1.1.13",
@@ -38,6 +38,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.2.0",
     "gray-matter": "^4.0.2",
+    "postcss-flexbugs-fixes": "^5.0.0",
+    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.9.6"
   },
   "license": "MIT",

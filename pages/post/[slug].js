@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -9,7 +10,6 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
-import React from "react";
 
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
@@ -50,23 +50,11 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
         <footer>
           <Bio className="mt-8 mb-16" />
         </footer>
-        <hr className="mt-4" />
-        <footer>
-          <div className="row justify-content-center" style={{padding:'20px'}}>
-            <h5>What is helpful?</h5>
-          </div>
-          <div className="row justify-content-center" style={{paddingBottom:'50px'}}>
-            <FontAwesomeIcon icon={faAngry} className="emoji-react" />
-            <FontAwesomeIcon icon={faGrinAlt} className="emoji-react" />
-            <FontAwesomeIcon icon={faSmileWink} className="emoji-react" />
-            <FontAwesomeIcon icon={faDizzy} className="emoji-react" />
-          </div>
-        </footer>
       </article>
       <nav className="flex flex-wrap justify-between mb-10">
         {previousPost ? (
           <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
-            <a className="text-lg font-bold">
+            <a className="text-lg font-light">
               ← {previousPost.frontmatter.title}
             </a>
           </Link>
@@ -75,12 +63,24 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
         )}
         {nextPost ? (
           <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
-            <a className="text-lg font-bold">{nextPost.frontmatter.title} →</a>
+            <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
           </Link>
         ) : (
           <div />
         )}
       </nav>
+      <hr className="mt-4" />
+      <footer>
+        <div className="row justify-content-center" style={{padding:'20px'}}>
+          <h5>What is helpful?</h5>
+        </div>
+        <div className="row justify-content-center" style={{paddingBottom:'50px'}}>
+          <FontAwesomeIcon icon={faAngry} className="emoji-react" />
+          <FontAwesomeIcon icon={faGrinAlt} className="emoji-react" />
+          <FontAwesomeIcon icon={faSmileWink} className="emoji-react" />
+          <FontAwesomeIcon icon={faDizzy} className="emoji-react" />
+        </div>
+      </footer>
     </Layout>
   );
 }

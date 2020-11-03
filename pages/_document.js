@@ -1,3 +1,4 @@
+import React from "react";
 import Document, { Head, Main, NextScript, Html } from "next/document";
 
 import { getSiteMetaData } from "utils/helpers";
@@ -8,7 +9,7 @@ export default class MyDocument extends Document {
 
     return (
       <Html lang={siteMetadata.language}>
-        <Head />
+        <Head/>
         <body>
           <Main />
           <NextScript />
