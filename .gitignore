@@ -29,5 +29,4 @@ yarn-error.log*
 .env.production.local
 
 #intelij idea
-.idea
-
+.idea/**

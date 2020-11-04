@@ -11,11 +11,10 @@ module.exports = withPlugins([
             strip: true,
             verbose: true,
         },
-        imagesPublicPath: '/blog/_next/static/images/',
+        imagesPublicPath: '/_next/static/images/',
     }],
     {
-        assetPrefix: '/blog/',
-        basePath: '/blog'
+        assetPrefix: '.'
     },
     {
         exportPathMap: async function (
@@ -25,6 +24,8 @@ module.exports = withPlugins([
             return {
                 '/': { page: '/' },
                 '/get-started': { page: '/get-started' },
+                '/web-dev': { page: '/web-dev'},
+                '/dev-ops': { page: '/dev-ops'},
             }
         },
     }
