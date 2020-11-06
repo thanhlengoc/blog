@@ -28,4 +28,10 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-/.idea/
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.mvn
+.idea/*.xml
