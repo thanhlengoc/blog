@@ -1,34 +1,43 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap';
-import SimpleSwiper from "./SimpleSwiper"
 
 const bannerStyle = {
     width: '100%',
     background: '#000',
     color: '#fff',
-    borderBottom: '1px solid #eaeaea',
-    paddingTop: '0',
-    paddingBottom: '0'
+    height: '50px',
+    display: 'flex',
+    alignItems: 'center',
+}
+
+const inner = {
+    width: '100%',
+    maxWidth: '1024px',
+    margin: '0 auto',
+    padding: '0 1.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    webkitBoxPack: 'justify'
+}
+
+const aStyle = {
+    display: 'inline-flex',
+    color: '#fff',
 }
 
 const Banner = () => {
 
     return (
-        <Navbar expand="sm" style={bannerStyle}>
-            <div className="container font-light" style={{paddingLeft:"67px", paddingRight:'67px'}}>
-                {/*<Nav.Link href="/">Blog</Nav.Link>*/}
-                <div className="row">
-                    <div className="col-md-8 align-self-center" style={{paddingLeft:'30px'}}>
-                        <SimpleSwiper/>
-                    </div>
-                    <div className="col-md-4 align-self-center d-flex justify-content-end">
-                        <Nav.Link href="/" style={{color:'#fff', paddingRight:'25px'}}>
-                            Go to social web →
-                        </Nav.Link>
-                    </div>
-                </div>
+        <div className="font-light" style={bannerStyle}>
+            <div style={inner}>
+                <a href="/" style={aStyle}>
+                    Hello
+                </a>
+                <a href="/" style={aStyle}>
+                    Go to social web →
+                </a>
             </div>
-        </Navbar>
+        </div>
     )
 }
 

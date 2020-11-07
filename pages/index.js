@@ -4,18 +4,19 @@ import Layout from "components/Layout";
 import SEO from "components/Seo";
 import { getSortedPosts } from "utils/posts";
 import React from "react";
+import Bio from "../components/Bio";
 
 export default function Home({ posts }) {
   return (
     <Layout>
       <SEO title="All posts" />
-      <div style={{paddingTop:'2rem'}}>
+      <div style={{paddingTop:'1.7rem'}}>
         {posts.map(({ frontmatter: { title, description, date }, slug }) => (
           <article key={slug}>
             <header className="mb-2">
               <h3 className="mb-2">
                 <Link href={"/post/[slug]"} as={`/post/${slug}`}>
-                  <a className="font-bold font-display" style={{color:'#000'}}>
+                  <a className="text-3xl font-bold font-display" style={{color:'#000'}}>
                     {title}
                   </a>
                 </Link>
@@ -28,6 +29,10 @@ export default function Home({ posts }) {
           </article>
         ))}
       </div>
+        <hr className="mt-4" />
+        <footer>
+            <Bio className="mt-8 mb-16" />
+        </footer>
     </Layout>
   );
 }

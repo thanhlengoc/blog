@@ -41,10 +41,10 @@ const Header = () => {
                     <FormControl type="text" placeholder="Feedback" className="mr-sm-2" style={{maxWidth:'130px'}}/>
                     <Button color="info" style={{marginLeft:'10px'}}>Learn</Button>
                     </Form>
+                    <FontAwesomeIcon className='flex-shrink-0 ml-3 mt-2 rounded-full'
+                                     style={{width:'1.5rem', height:'1.5rem', color: '#6C757D'}}
+                                     icon={["fab", "github"]} />
                 </Navbar.Collapse>
-                <FontAwesomeIcon className='flex-shrink-0 ml-3 mt-2 rounded-full' 
-                                 style={{width:'1.5rem', height:'1.5rem', color: '#6C757D'}} 
-                                 icon={["fab", "github"]} />
             </div>
         </Navbar>
     )

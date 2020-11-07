@@ -33,7 +33,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
         description={frontmatter.description || post.excerpt}
       />
 
-      <article style={{paddingTop:'2rem'}}>
+      <article style={{paddingTop:'1.7rem'}}>
         <header className="mb-8">
           <h1 className="mb-2 text-5xl font-black leading-none font-display">
             {frontmatter.title}

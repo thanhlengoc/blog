@@ -35,3 +35,4 @@ yarn-error.log*
 *.ipr
 .mvn
 .idea/*.xml
+/out/
