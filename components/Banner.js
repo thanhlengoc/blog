@@ -13,7 +13,7 @@ const inner = {
     width: '100%',
     maxWidth: '1024px',
     margin: '0 auto',
-    padding: '0 1.5rem',
+    padding: '0 1.7rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -31,7 +31,7 @@ const Banner = () => {
         <div className="font-light" style={bannerStyle}>
             <div style={inner}>
                 <a href="/" style={aStyle}>
-                    Hello
+                    Blog
                 </a>
                 <a href="/" style={aStyle}>
                     Go to social web →

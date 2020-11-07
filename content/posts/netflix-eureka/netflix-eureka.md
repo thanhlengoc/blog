@@ -1,108 +1,164 @@
 ---
-title: Netflix Eureka
+title: Spring Cloud Netflix Eureka
 date: 2020-07-28T22:40:32.169Z
-description: Who doesn't like a long post showcasing the different headings?
+description: Client-side discovery service
 ---
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
+![0](0.png)
 
-## On deer horse aboard tritely yikes and much
+### Nhu cầu truy tìm dịch vụ (Service Discovery):
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+Mỗi service instance trong một ứng dụng microservice đều được gán một ví trí mạng và chúng có khuynh hướng thay đổi linh hoạt vì những tác động khác mang đến. Do đó, việc client xác định vị trí của service cần gọi tới trở nên phức tạp hơn.
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+Có 2 mô hình chủ yếu để sử dụng truy tìm dịch vụ, đó là: client-side discovery và server-side discovery.
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rhetoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+Client-side discovery và server-side discovery là hai mô hình tìm kiếm dịch vụ chủ yếu được áp dụng. Trong hệ thống với mô hình client-side discovery, các client truy vấn đến SR, chọn một thực thể khả dụng và gửi yêu cầu đi. Trong hệ thống áp dụng mô hình server-side discovery, các client gửi yêu cầu đến dịch vụ khả dụng thông qua một thiết bị định tuyến (router). Router có nhiệm vụ truy vấn đến SR và chuyển tiếp yêu cầu từ client đến thực thể đang hoạt động.
 
-### Overlaid the jeepers uselessly much excluding
+Trong bài này chúng ta cùng tìm hiểu mô hình client-side discovery:
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+![ServiceRegistry](1.png)
 
-> Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean.
+Mô hình này quy định rằng các client sẽ phải xác định ví trí mạng của các available service và yêu cầu load balancing. Để làm được điều này client cần truy vấn một cơ sở dữ liệu gọi là Service Registry. Đây là nơi chứa các thông tin và vị trí mạng của các service instance. Sau khi truy vấn được địa chỉ của service, client sử dụng thuật toán cân bằng tải (Ribbon) giúp chọn ra service available để gửi request.
 
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
 
-### According a funnily until pre-set or arrogant well cheerful
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+Mô hình này giúp giải quyết vấn đề địa chỉ mạng liên tục thay đổi của các service bằng cách:
 
-1.  So baboon this
-2.  Mounted militant weasel gregariously admonishingly straightly hey
-3.  Dear foresaw hungry and much some overhung
-4.  Rash opossum less because less some amid besides yikes jeepers frenetic
-    impassive fruitlessly shut
+- Khi service instance bắt đầu khởi động, nó sẽ ghi vị trí mạng của chính nó vào Service Registry và xoá bỏ khi service này kết thúc.
+- Áp dụng kỹ thuật tín hiệu tuần hoàn (heartbeat mechanism) về việc cập nhật địa chỉ mạng của các service.
 
-When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rhetoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
 
-> The copy warned the Little Blind Text, that where it came from it would have
-> been rewritten a thousand times and everything that was left from its origin
-> would be the word "and" and the Little Blind Text should turn around and
-> return to its own, safe country.
+May thay, Netflix OSS đã cung cấp một ví dụ tuyệt vời của mô hình client-side discovery.
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
-and dragged her into their agency, where they abused her for their projects
-again and again. And if she hasn’t been rewritten, then they are still using
-her. Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts.
+Netflix Eureka là một Service Registry (SR). Nó cung cấp bộ REST API cho việc quản lý và đăng ký các service instance và cho việc truy vấn các instance có sẵn.
 
-#### Silent delightfully including because before one up barring chameleon
+Một service instance sử dụng lệnh POST để đăng ký địa chỉ mạng của nó và cứ mỗi 30 giây nó tiếp tục dùng lệnh PUT để gửi yêu cầu cập nhật đến SR. Thông tin của một service sẽ tự động xoá bỏ nếu không cập nhật trong vòng 30s và nó cũng sẽ bị xoá khi dùng HTTP DELETE. Client có thể sử dụng HTTP GET để lấy ví trị mạng của service.
 
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-large language ocean. A small river named Duden flows by their place and
-supplies it with the necessary regelialia. It is a paradisematic country, in
-which roasted parts of sentences fly into your mouth.
 
-Even the all-powerful Pointing has no control about the blind texts it is an
-almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
-advised her not to do so, because there were thousands of bad Commas, wild
-Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
 
-#### Wherever far wow thus a squirrel raccoon jeez jaguar this from along
+### Architecture:
 
-She packed her seven versalia, put her initial into the belt and made herself on
-the way. When she reached the first hills of the Italic Mountains, she had a
-last view back on the skyline of her hometown Bookmarksgrove, the headline of
-Alphabet Village and the subline of her own road, the Line Lane. Pityful a
-rhetoric question ran over her cheek, then she continued her way. On her way she
-met a copy.
+![2](2.png)
 
-#### Slapped cozy a that lightheartedly and far
+- Service Registry: service này đóng vai trò là discovery server và cung cấp dịch vụ truy tìm service (Eureka server).
+- Service instance: đóng vai trò và eureka client và nó sẽ tự đăng ký tới eureka server.
+- Các trạng thái Heartbeats: UP, DOWN, OUT_OF_SERVICE.
 
-The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word "and" and the Little Blind Text should turn around and return
-to its own, safe country. But nothing the copy said could convince her and so it
-didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
-with Longe and Parole and dragged her into their agency, where they abused her
-for their projects again and again.
+### Ưu điểm của Eureka:
+
+1. Điểm mạnh là tập trung vào đảm bảo các service có thể tìm thấy nhau trong các tình huống như nằm ngoài phân vùng mạng hoặc máy chủ gặp lỗi.
+2. High Available được thể hiện qua 2 tính năng:
+    - Server cluster – cho phép thiết lập cụm máy chủ để tránh trường hợp single point failure.
+    - Client side caching – bộ nhớ đệm phía client (client sẽ truy xuất thông tin vị trí mạng từ eureka server và lưu vào bộ nhớ cache, phòng trong trường hợp tất cả máy chủ gặp sự cố thì client vẫn giữ lại snapshot cuối cùng để request).
+    - DNS - Netflix sử dụng cấu hình DNS để quản lý động danh sách Máy chủ Eureka mà không ảnh hưởng đến các ứng dụng sử dụng Eureka. Đây là thiết lập được đề xuất trên môi trường production.
+    - Server self preservation mode – Eureka server có tính năng tự bảo vệ: trong trường hợp một số instance nhất định không gửi được Heartbeats trong một khoảng thời gian xác định, Máy chủ sẽ không xóa chúng khỏi sổ đăng ký. Nó coi rằng một phân vùng mạng đã xảy ra và sẽ đợi các instance này quay trở lại. Tính năng này rất hữu ích trong triển khai trên cloud và có thể bị tắt đối với các Services in a private data center.
+    - Non-JVM Service integration – there are two approach: REST API, Sidecar.
+3. Eureka được build để làm việc với Amazone Web Service (AWS) nên hỗ trợ triển khai trên AWS tốt.
+4. Hỗ trợ giao diện dashboad để quan sát trạng thái của client và server.
+
+![3](3.png)
+
+### Example:
+
+[Alphabet Village](https://github.com/thanhlengoc/springclould-netflix-eureka/tree/master)
+Sử dụng Spring Cloud + Netflix Eureka
+- Add Dependency in pom.xml
+```xml
+<dependencies>   
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+   </dependency>
+   <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+   </dependency>
+ 
+   <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+         <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+         </exclusion>
+      </exclusions>
+   </dependency>
+</dependencies>
+```
+
+- Main Class of Discovery service:
+
+```java
+@EnableEurekaServer
+@SpringBootApplication
+public class DiscoveryServiceApplication {
+ 
+   public static void main(String[] args) {
+      SpringApplication.run(DiscoveryServiceApplication.class, args);
+   }
+ 
+}
+```
+
+- application.yml configure of Eureka server 
+
+```yaml
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        fetch-registry: false
+        register-with-eureka: false
+    service-url:
+        default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+ 
+logging:
+    level:
+        com:
+            netflix:
+                discovery: 'OFF'
+                eureka: 'OFF'
+ 
+server:
+    port: 8761
+```
+
+- Main class of business service (Eureka client)
+
+```java
+@EnableEurekaClient
+@SpringBootApplication
+public class MotoServiceApplication {
+ 
+   public static void main(String[] args) {
+      SpringApplication.run(MotoServiceApplication.class, args);
+   }
+ 
+}
+```
+
+- application.yml configure of Eureka client 
+
+```yaml
+server:
+    port: 8090
+ 
+spring:
+    application:
+        name: car-service
+ 
+eureka:
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+```
+
+#### Kết luận:
+
+> Trong một ứng dụng microservices, xu hướng của các service instance đang chạy là thay đổi linh động. 
+> Các thực thể được gán vị trí mạng không cố định. Do đó, các client cần áp dụng kỹ thuật truy tìm dịch vụ để gửi request đến.
+> Một bộ phận rất quan trọng trong truy tìm dịch vụ đó là Service Registry. 
+> Đây là một cơ sở dữ liệu của các thực thể dịch vụ đang được kích hoạt. 
+> Service registry cung cấp các API giúp quản lý ghi xóa và truy vấn thông tin dịch vụ.
