@@ -13,10 +13,7 @@ const GetStartedPage = () => {
                 </h1>
             </header>
             <p>Welcome to ThanhLe documentation!</p>
-            <p>Where sharing technical.</p>
-            <p>Where sharing technical.</p>
-            <p>Where sharing technical.</p>
-            <hr className="mt-4" />
+
             <footer>
                 <Bio className="mt-8 mb-16" />
             </footer>
@@ -24,5 +21,15 @@ const GetStartedPage = () => {
         </Layout>
     )
 }
+
+// export async function getStaticProps() {
+//     const posts = getSortedPosts("get-started");
+//
+//     return {
+//         props: {
+//             posts,
+//         },
+//     };
+// }
 
 export default GetStartedPage;

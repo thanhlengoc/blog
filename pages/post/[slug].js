@@ -10,6 +10,8 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
+
 
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
@@ -26,6 +28,9 @@ const MarkdownImage = ({ alt, src }) => (
 );
 
 export default function Post({ post, frontmatter, nextPost, previousPost }) {
+  const router = useRouter()
+  console.log("router: ", router)
+
   return (
     <Layout>
       <SEO
@@ -35,7 +40,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 
       <article style={{paddingTop:'1.7rem'}}>
         <header className="mb-8">
-          <h1 className="mb-2 text-5xl font-black leading-none font-display">
+          <h1 className="mb-2 text-4xl font-black leading-none font-display">
             {frontmatter.title}
           </h1>
           <p className="text-sm">{frontmatter.date}</p>
@@ -86,16 +91,22 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostsSlugs();
+  const paths = getPostsSlugs("/web-dev");
+  console.log("path: ", paths)
 
+  // generate the paths for the pages you want to render
   return {
     paths,
-    fallback: false,
+    fallback: false, // false if you know all the slugs that you want to generate ahead of time
   };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const postData = getPostBySlug(slug);
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  // console.log("params: ", params)
+
+  const postData = getPostBySlug(slug, "/web-dev");
 
   if (!postData.previousPost) {
     postData.previousPost = null;

@@ -11,9 +11,10 @@ a:hover {
   color: #007bff
 }
 
-span,
+span, li,
 p {
   @apply font-light;
+  font-size: 16px;
 }
 
 /* Styles for lazy loaded images */

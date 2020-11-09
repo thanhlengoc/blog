@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
 import Image from "./Image";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
@@ -9,8 +9,6 @@ const headerStyle = {
     color: '#000',
     display: 'flex',
     alignItems: 'center',
-    paddingTop: '15px',
-    paddingBottom: '15px',
     borderBottom: '1px solid #eaeaea',
 }
 
@@ -18,7 +16,7 @@ const inner = {
     width: '100%',
     maxWidth: '1024px',
     margin: '0 auto',
-    padding: '0 1.7rem',
+    padding: '0.2rem 1.7rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -43,7 +41,7 @@ const Header = () => {
                         previewSrc={require("../content/assets/thanhle.jpeg?lqip")}
                         alt="Profile"
                     />
-                    <Navbar.Brand className="font-bold" href="/">Le Ngoc Thanh</Navbar.Brand>
+                    <Navbar.Brand href="/">Le Ngoc Thanh</Navbar.Brand>
                 </div>
                 <div style={childStyle}>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>

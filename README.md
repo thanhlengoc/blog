@@ -1,5 +1,5 @@
 <h1 align="center">
-  Next.js blog starter
+  Le Ngoc Thanh blog starter
 </h1>
 
 Start off your writing journey with this Next.js markdown blog template.
@@ -58,9 +58,6 @@ To learn more about Tailwind CSS, take a look at the following resources:
 - [ ] Add Sitemap
 - [ ] Add RSS Feed
 - [ ] Dark Mode
-- [x] Add support for WebP images
-- [x] Add SEO Component
-- [x] Add Dynamic Site Metadata
 
 ## ☁ Deploy
 

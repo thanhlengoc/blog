@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import Layout from "components/Layout";
 import SEO from "components/Seo";
 import { getSortedPosts } from "utils/posts";
@@ -24,7 +23,7 @@ export default function Home({ posts }) {
               <span className="text-sm">{date}</span>
             </header>
             <section>
-              <p className="mb-8 text-lg">{description}</p>
+              <p className="mb-8 text-md">{description}</p>
             </section>
           </article>
         ))}
@@ -38,8 +37,7 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = getSortedPosts();
-
+  const posts = getSortedPosts("/all-posts");
   return {
     props: {
       posts,

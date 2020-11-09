@@ -1,10 +1,13 @@
 import React from 'react'
 import {Form, InputGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faSearch} from '@fortawesome/free-solid-svg-icons'
-
+import {faSearch, faDotCircle} from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
 
 const Sidebar = () => {
+    const path = useRouter();
+    const currentPath = path.pathname;
+    // console.log("path: ", path)
 
     return (
         <div className="sidenav">
@@ -21,11 +24,13 @@ const Sidebar = () => {
                     placeholder="Search.."
                 />
             </InputGroup>
-            <a href="/" className="text-lg font-bold">Documentation</a>
-            <a href="/get-started">Get Started</a>
-            <a href="/web-dev">Web Development</a>
-            <a href="/dev-ops">DevOps</a>
-            {/*<a href="/dev-sec-ops">DevSecOps</a>*/}
+            <a href="/" className={currentPath === "/" ? "font-bold" : ""}>
+                {/*<FontAwesomeIcon icon={faDotCircle}/> */}
+                All posts
+            </a>
+            <a href="/get-started" className={currentPath === "/get-started" ? "font-bold" : ""}>Get Started</a>
+            <a href="/web-dev" className={currentPath === "/web-dev" ? "font-bold" : ""}>Web Development</a>
+            <a href="/dev-ops" className={currentPath === "/dev-ops" ? "font-bold" : ""}>DevOps</a>
         </div>
     )
 }

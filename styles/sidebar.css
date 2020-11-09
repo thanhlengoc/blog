@@ -1,16 +1,16 @@
 .sidenav {
 position: sticky;
 z-index: 1;
-top: 9.4rem;
+top: 7.8rem;
 background: #fff;
 overflow-x: hidden;
-margin-top: 2rem;
+margin-top: 1.7rem;
 }
 
 .sidenav a {
 padding: 7px 0;
 text-decoration: none;
-/* font-size: 18px; */
+font-size: 16px;
 color: black;
 display: block;
 }

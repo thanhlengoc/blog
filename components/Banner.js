@@ -4,7 +4,7 @@ const bannerStyle = {
     width: '100%',
     background: '#000',
     color: '#fff',
-    height: '50px',
+    height: '35px',
     display: 'flex',
     alignItems: 'center',
 }
@@ -17,12 +17,13 @@ const inner = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    webkitBoxPack: 'justify'
+    // webkitBoxPack: 'justify'
 }
 
 const aStyle = {
     display: 'inline-flex',
     color: '#fff',
+    fontSize: '14px'
 }
 
 const Banner = () => {

@@ -1,12 +1,12 @@
 ---
 title: Spring Cloud Netflix Eureka
-date: 2020-07-28T22:40:32.169Z
+date: 2020-11-07T22:40:32.169Z
 description: Client-side discovery service
 ---
 
 ![0](0.png)
 
-### Nhu cầu truy tìm dịch vụ (Service Discovery):
+#### Nhu cầu truy tìm dịch vụ (Service Discovery):
 
 Mỗi service instance trong một ứng dụng microservice đều được gán một ví trí mạng và chúng có khuynh hướng thay đổi linh hoạt vì những tác động khác mang đến. Do đó, việc client xác định vị trí của service cần gọi tới trở nên phức tạp hơn.
 
@@ -60,7 +60,8 @@ Một service instance sử dụng lệnh POST để đăng ký địa chỉ m�
 
 ### Example:
 
-[Alphabet Village](https://github.com/thanhlengoc/springclould-netflix-eureka/tree/master)
+Code available in: [Github](https://github.com/thanhlengoc/springclould-netflix-eureka/tree/master)
+
 Sử dụng Spring Cloud + Netflix Eureka
 - Add Dependency in pom.xml
 ```xml
