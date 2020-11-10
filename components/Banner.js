@@ -34,8 +34,8 @@ const Banner = () => {
                 <a href="/" style={aStyle}>
                     Blog
                 </a>
-                <a href="/" style={aStyle}>
-                    Go to social web →
+                <a href="https://github.com/thanhlengoc/blog" style={aStyle}>
+                    Go to github page →
                 </a>
             </div>
         </div>

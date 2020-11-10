@@ -1,14 +1,11 @@
 import Layout from 'components/Layout';
 import React from 'react'
 import SEO from "components/Seo";
-import {useRouter} from "next/router";
 import Link from "next/link";
 import Bio from "../../components/Bio";
 import {getSortedPosts} from "../../utils/posts";
 
 export default function DevOpsPage({posts}) {
-    const path = useRouter();
-    const currentPage = path.pathname;
     return (
         <Layout>
             <SEO title="DevOps" />
@@ -17,11 +14,8 @@ export default function DevOpsPage({posts}) {
                     <article key={slug}>
                         <header className="mb-2">
                             <h3 className="mb-2">
-                                <Link href={{
-                                    pathname: '/post/[slug]',
-                                    query: { slug: slug, pagePath: currentPage }
-                                }}
-                                    // as={`/post/${slug}`}
+                                <Link href={'/dev-ops/post/[slug]'}
+                                    as={`/dev-ops/post/${slug}`}
                                 >
                                     <a className="text-2xl font-bold font-display" style={{color:'#000'}}>
                                         {title}

@@ -1,7 +1,6 @@
 // import { useRouter } from "next/router";
 import Header from './Header';
 import { Col, Row } from "react-bootstrap";
-// import Footer2 from "./Footer2";
 import Banner from "./Banner";
 import Sidebar from "./Sidebar"
 import React from "react";
@@ -25,17 +24,6 @@ export default function Layout({ children }) {
           </Col>
         </Row>
       </div>
-      {/*<Footer2>*/}
-      {/*  /!*<div className="container text-lg font-light" style={{paddingLeft:'40px', paddingRight:'83px'}}>*!/*/}
-      {/*              © {new Date().getFullYear()}, Built by{" "}*/}
-      {/*    <a href="https://github.com/thanhlengoc">thanhlengoc</a>*/}
-      {/*    &#128293;*/}
-      {/*    <a href="#contact"*/}
-      {/*       style={{float:'right', color:'#000', marginLeft:'20px', marginRight:'45px'}}>Contact</a>*/}
-      {/*    <a href="#contact" style={{float:'right', color:'#000'}}>About</a>*/}
-      {/*            */}
-      {/*/!*</div>*!/*/}
-      {/*</Footer2>*/}
     </div>
   );
 }

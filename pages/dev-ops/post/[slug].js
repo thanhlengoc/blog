@@ -20,17 +20,14 @@ const CodeBlock = ({ language, value }) => {
 const MarkdownImage = ({ alt, src }) => (
   <Image
     alt={alt}
-    src={require(`../../content/assets/${src}`)}
-    webpSrc={require(`../../content/assets/${src}?webp`)}
-    previewSrc={require(`../../content/assets/${src}?lqip`)}
+    src={require(`../../../content/assets/${src}`)}
+    webpSrc={require(`../../../content/assets/${src}?webp`)}
+    previewSrc={require(`../../../content/assets/${src}?lqip`)}
     className="w-full"
   />
 );
 
 export default function Post({ post, frontmatter, nextPost, previousPost }) {
-  const router = useRouter()
-  console.log("router: ", router)
-
   return (
     <Layout>
       <SEO
@@ -91,9 +88,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostsSlugs("/web-dev");
-  console.log("path: ", paths)
-
+  const paths = getPostsSlugs("/dev-ops");
   // generate the paths for the pages you want to render
   return {
     paths,
@@ -104,8 +99,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-
-  const postData = getPostBySlug(slug, "/web-dev");
+  const postData = getPostBySlug(slug, "/dev-ops");
 
   if (!postData.previousPost) {
     postData.previousPost = null;

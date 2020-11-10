@@ -20,7 +20,7 @@ const inner = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    webkitBoxPack: 'justify'
+    // webkitBoxPack: 'justify'
 }
 
 const childStyle = {
