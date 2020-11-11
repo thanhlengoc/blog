@@ -4,7 +4,7 @@ date: 2020-11-10T22:40:32.169Z
 description: Client-side discovery service
 ---
 
-#### Table of Contents
+##### Table of Contents
 > 1. Bundling
 > 2. Code Splitting
 > 3. Import()
@@ -12,12 +12,15 @@ description: Client-side discovery service
 > 5. Error boundaries
 > 6. Route-based code splitting
 > 7. Name Export
+> 8. Demo
+> 9. Conclusion
 
 <hr class="mt-4 mb-4" />
 
-## Bundling
+## 1. Bundling
 
-Hầu hết các ứng dụng React sẽ có các file của chúng được “đóng gói” bằng cách sử dụng các công cụ như [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) hoặc [Browserify](http://browserify.org/). Đóng gói là quá trình theo dõi các file đã import và hợp nhất chúng thành một file duy nhất: “bundle”. Sau đó, gói này có thể được đưa vào trang web để tải toàn bộ ứng dụng cùng một lúc.
+Hầu hết các ứng dụng React sẽ có các file của chúng được “đóng gói” bằng cách sử dụng các công cụ như [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) hoặc [Browserify](http://browserify.org/). 
+Đóng gói là quá trình theo dõi các file đã import và hợp nhất chúng thành một file duy nhất: “bundle”. Sau đó, gói này có thể được đưa vào trang web để tải toàn bộ ứng dụng cùng một lúc.
 
 <h6 style="color: #6d6d6d">Example:<h6>
 
@@ -43,15 +46,15 @@ export function add(a, b) {
 
 <hr class="mt-4 mb-4" />
 
-## Code Splitting
+## 2. Code Splitting
 
-Tính năng đóng gói này tốt nhưng khi ứng dụng phát triển thì bundle cũng lớn theo. Đặc biệt là sử dụng thư viện bên thứ ba.
- 
-Nên phát sinh vấn đề là vô tình làm cho mã code của ứng dụng lớn lên một cách không cần thiết và phải mất nhiều thời gian để tải bundle khi render trang web.
+Tính năng đóng gói này tốt, nhưng khi ứng dụng phát triển thì bundle cũng lớn theo. Đặc biệt là sử dụng thư viện bên thứ ba.
+Nên trong quá trình phát triển ứng dụng sẽ phát sinh vấn đề là vô tình làm cho mã code của ứng dụng lớn lên một cách không cần thiết 
+và phải mất nhiều thời gian để tải bundle khi render trang web.
 
 ![Chunking code or Code splitting](bundle.png)
 
-=> Cần phải code splitting
+=> Chính vì vậy, ta cần phải Code-Splitting khi phát triển ứng dụng ReactJS.
 
 Code-Splitting là một tính năng được hỗ trợ bởi các thư viện như Webpack, Rollup và Browserify, có thể tạo nhiều gói bundle và được tải động trong thời gian chạy.
 
@@ -63,9 +66,9 @@ Code-Splitting là một tính năng được hỗ trợ bởi các thư viện 
 
 <hr class="mt-4 mb-4" />
 
-## import()
+## 3. import()
 
-Cách tốt nhất để đưa tính năng code-splitting vào ứng dụng là thông qua cú pháp dynamic <span style="background-color: #FFFF00">import()</span>
+Cách tốt nhất để đưa tính năng code-splitting vào ứng dụng là thông qua cú pháp dynamic <span style="background-color: #eee; padding: 4px; font-weight:500">import()</span>
 
 ###### Before:
 ```js
@@ -85,7 +88,7 @@ Khi Webpack gặp cú pháp này, nó sẽ tự động bắt đầu phân tách
 
 <hr class="mt-4 mb-4" />
 
-## React.lazy
+## 4. React.lazy
 
 React.lazy cho phép render dynamic import như một component thông thường.
 
@@ -144,7 +147,7 @@ function MyComponent() {
 
 <hr class="mt-4 mb-4" />
 
-## Error boundaries
+## 5. Error boundaries
 
 Nếu một module không tải được (ví dụ: do lỗi mạng), nó sẽ gây ra lỗi. Ta có thể xử lý lỗi này để trải nghiệm người dùng tốt hơn và quản lý quá trình khôi phục bằng Error Boundaries. Khi đã tạo Error boundaries, có thể sử dụng nó ở bất kỳ đâu phía trên các lazy component của mình để hiển thị trạng thái lỗi khi có lỗi mạng.
 
@@ -173,10 +176,13 @@ const MyComponent = () => (
 
 <hr class="mt-4 mb-4" />
 
-## Route-based code splitting
+## 6. Route-based code splitting
 
-Việc định tuyến(routes) trong ứng dụng code-splitting có thể hơi phức tạp.
-Nhưng đây là nơi tốt để bắt đầu với các routes. Hầu hết mọi người trên web đã quen với việc chuyển trang mất một khoảng thời gian để tải.
+Việc định tuyến(routes) trong ứng dụng code-splitting có thể hơi phức tạp. 
+Chúng ta sẽ muốn đảm bảo rằng các routes sẽ chia đều cho các bundle nhưng không làm gián đoạn trải nghiệm người dùng.
+Hầu hết mọi người trên web đã quen với việc chuyển trang mất một khoảng thời gian để tải, 
+nên ứng dụng sẽ có xu hướng re-rendering lại toàn bộ trang (của route đó).  
+Người dùng không thể thao tác trên trang cho đến khi nó được load xong.
 
 Ví dụ về cách thiết lập code splitting dựa trên Route vào App bằng cách sử dụng các thư viện như React Router với React.lazy.
 
@@ -201,9 +207,10 @@ const App = () => (
 
 <hr class="mt-4 mb-4" />
 
-## Named Exports
+## 7. Named Exports
 
-React.lazy hiện chỉ hỗ trợ export default. Nếu muốn import một component lazy để sử dụng, có thể tạo một module trung gian export module đó default. Điều này đảm bảo các Component tiếp tục hoạt động mà không kéo các thành phần không sử dụng vào.
+React.lazy hiện chỉ hỗ trợ export default. Nếu muốn import một component lazy để sử dụng, có thể tạo một module trung gian export module đó default. 
+Điều này đảm bảo các Component tiếp tục hoạt động mà không kéo các thành phần không sử dụng vào.
 
 <h6 style="color: #6d6d6d">Example:<h6>
 
@@ -223,7 +230,19 @@ import React, { lazy } from 'react';
 const MyComponent = lazy(() => import("./MyComponent.js"));
 ```
 
-## Demo
+## 8. Demo
 
+Setup demo in Build Management, set network to Slow 3G. 
+We can see react lazy load bundle when route page has changes.
 
+<video controls
+    src="https://res.cloudinary.com/dpijfwgsf/video/upload/v1605063586/blog/demo-code-splitting_s10bw8.mp4">
+Sorry, your browser doesn't support embedded videos, 
+but don't worry, you can <a href="https://res.cloudinary.com/dpijfwgsf/video/upload/v1605063586/blog/demo-code-splitting_s10bw8.mp4">download it</a> 
+and watch it with your favorite video player!
+</video>
 
+## 9. Conclusion
+
+> Việc code-splitting trong React App sẽ giúp chúng ta cải thiện hiệu suất đáng kể cho ứng dụng, 
+> tránh tải những mã code không cần thiết trong lúc render, giúp trải nghiệm người dùng tốt hơn ngay cả trong điều kiện network kém.

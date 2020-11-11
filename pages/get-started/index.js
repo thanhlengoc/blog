@@ -14,7 +14,7 @@ export default function GetStartedPage () {
                     Getting started
                 </h1>
             </header>
-            <p>Welcome to ThanhLe Blog!</p>
+            <p>Welcome to Le Ngoc Thanh Blog!</p>
             <hr className="mt-4" />
             <footer>
                 <Bio className="mt-8 mb-16" />

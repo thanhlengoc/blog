@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {okaidia} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import Layout from "components/Layout";
 import Image from "components/Image";
@@ -10,11 +11,10 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
-import { useRouter } from 'next/router'
 
 
 const CodeBlock = ({ language, value }) => {
-  return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
+  return <SyntaxHighlighter style={okaidia} language={language}>{value}</SyntaxHighlighter>;
 };
 
 const MarkdownImage = ({ alt, src }) => (
@@ -37,7 +37,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 
       <article style={{paddingTop:'1.7rem'}}>
         <header className="mb-8">
-          <h1 className="mb-2 text-4xl font-black leading-none font-display">
+          <h1 className="mb-2 text-5xl font-black leading-none font-display">
             {frontmatter.title}
           </h1>
           <p className="text-sm">{frontmatter.date}</p>
@@ -55,7 +55,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
       </article>
       <nav className="flex flex-wrap justify-between mb-10">
         {previousPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
+          <Link href={"/web-dev/post/[slug]"} as={`/web-dev/post/${previousPost.slug}`}>
             <a className="text-lg font-light">
               ← {previousPost.frontmatter.title}
             </a>
@@ -64,7 +64,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
           <div />
         )}
         {nextPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
+          <Link href={"/web-dev/post/[slug]"} as={`/web-dev/post/${nextPost.slug}`}>
             <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
           </Link>
         ) : (

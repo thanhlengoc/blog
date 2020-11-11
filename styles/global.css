@@ -14,7 +14,7 @@ a:hover {
 span, li,
 p {
   @apply font-light;
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 
 /* Styles for lazy loaded images */

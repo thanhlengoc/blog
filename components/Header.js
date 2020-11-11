@@ -20,7 +20,6 @@ const inner = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // webkitBoxPack: 'justify'
 }
 
 const childStyle = {
@@ -46,6 +45,7 @@ const Header = () => {
                 <div style={childStyle}>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
+                        {/*<a href="/" className="font-light" style={{color:'#000',fontSize: '14px', margin:"0 10px"}}>Distribute</a>*/}
                         <Form inline>
                             <FormControl type="text" placeholder="Feedback" className="mr-sm-2"
                                          style={{maxWidth: '120px',height:'30px',fontSize: '14px'}}/>

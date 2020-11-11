@@ -14,12 +14,12 @@ const Sidebar = () => {
             <InputGroup>
                 <InputGroup.Prepend style={{borderRight: 'none'}}>
                     <InputGroup.Text style={{backgroundColor: '#fff', paddingRight: '0'}}>
-                        <FontAwesomeIcon icon={faSearch} style={{color: '#6C757D'}}/>
+                        <FontAwesomeIcon icon={faSearch} style={{color: '#eee'}}/>
                     </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Form.Control
                     className="mr-sm-2"
-                    style={{borderLeft: 'none'}}
+                    style={{borderLeft: 'none', fontSize: '14px'}}
                     type="text"
                     placeholder="Search.."
                 />
@@ -31,8 +31,8 @@ const Sidebar = () => {
             <a href="/web-dev" className={currentPath === "/web-dev" ? "font-bold" : ""}>
                 <FontAwesomeIcon icon={faAngleRight} /> Web Development
             </a>
-            <a href="/dev-ops" className={currentPath === "/dev-ops" ? "font-bold" : ""}>
-                <FontAwesomeIcon icon={faAngleRight} /> DevOps
+            <a href="/distributed" className={currentPath === "/distributed" ? "font-bold" : ""}>
+                <FontAwesomeIcon icon={faAngleRight} /> Distributed
             </a>
         </div>
     )
