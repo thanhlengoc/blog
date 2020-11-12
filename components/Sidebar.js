@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 const Sidebar = () => {
     const path = useRouter();
     const currentPath = path.pathname;
-    // console.log("path: ", path)
 
     return (
         <div className="sidenav">

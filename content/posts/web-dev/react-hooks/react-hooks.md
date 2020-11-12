@@ -1,6 +1,8 @@
 ---
 title: React Hooks
 description: The first post is the most memorable one.
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605170772/blog/1_R-oovJm4IQBLDjZy6DvbBg_taspol.png
+tag: Front-end
 date: 2020-11-11T11:00:00.000Z
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: Selenium Grid
 description: Setup Selenium Grid for automation testing
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605170918/blog/selenium-grid-logo-huge_mnmqaf.png
+tag: Distributed
 date: 2020-11-07T11:00:00.000Z
 ---
 

@@ -11,6 +11,8 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
+import {Badge} from "react-bootstrap";
+const toc = require("remark-toc");
 
 
 const CodeBlock = ({ language, value }) => {
@@ -40,13 +42,17 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
           <h1 className="mb-2 text-5xl font-black leading-none font-display">
             {frontmatter.title}
           </h1>
-          <p className="text-sm">{frontmatter.date}</p>
+          <div style={{display: 'flex'}}>
+            <Badge className="mr-2" variant="warning" style={{height:'fit-content'}}>{frontmatter.tag}</Badge>
+            <p className="text-sm">{frontmatter.date}</p>
+          </div>
         </header>
         <ReactMarkdown
           className="mb-4 prose-sm prose sm:prose lg:prose-lg"
           escapeHtml={false}
           source={post.content}
           renderers={{ code: CodeBlock, image: MarkdownImage }}
+          // plugins={[toc]}
         />
         <hr className="mt-4" />
         <footer>

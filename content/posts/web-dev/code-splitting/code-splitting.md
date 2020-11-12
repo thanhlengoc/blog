@@ -1,6 +1,8 @@
 ---
 title: Code-Splitting in ReactJS
 date: 2020-11-10T22:40:32.169Z
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605170254/blog/maxresdefault_xk7hba.jpg
+tag: Front-end
 description: Client-side discovery service
 ---
 
@@ -62,7 +64,7 @@ Code-Splitting là một tính năng được hỗ trợ bởi các thư viện 
 
 - Mặc dù chưa giảm tổng lượng code nhưng giúp tránh tải code mà người dùng chưa cần và giảm lượng lớn code cần thiết tải trong lần đầu tiên.
 
-![Splitting chunk](split-code.jpeg)
+![Splitting chunk](split-bundle.png)
 
 <hr class="mt-4 mb-4" />
 
@@ -178,13 +180,11 @@ const MyComponent = () => (
 
 ## 6. Route-based code splitting
 
-Việc định tuyến(routes) trong ứng dụng code-splitting có thể hơi phức tạp. 
-Chúng ta sẽ muốn đảm bảo rằng các routes sẽ chia đều cho các bundle nhưng không làm gián đoạn trải nghiệm người dùng.
-Hầu hết mọi người trên web đã quen với việc chuyển trang mất một khoảng thời gian để tải, 
-nên ứng dụng sẽ có xu hướng re-rendering lại toàn bộ trang (của route đó).  
-Người dùng không thể thao tác trên trang cho đến khi nó được load xong.
+Hầu hết mọi người khi làm việc với ứng dụng React đã biết tới <span style="background-color: #eee; padding: 4px; font-weight:500">react-route</span>, để định tuyến(routing) các web view trong ứng dụng.
 
-Ví dụ về cách thiết lập code splitting dựa trên Route vào App bằng cách sử dụng các thư viện như React Router với React.lazy.
+Trong code-splitting chúng ta sẽ muốn chia đều các bundle cho các routes để trải nghiệm người dùng được tốt hơn. 
+
+Dưới đây là ví dụ về cách thiết lập code splitting dựa trên Route vào App bằng cách sử dụng các thư viện như <span style="background-color: #eee; padding: 4px; font-weight:500">[React Router](https://reactrouter.com/web/guides/quick-start)</span> với <span style="background-color: #eee; padding: 4px; font-weight:500">React.lazy</span>.
 
 ```js
 import React, { Suspense, lazy } from 'react';

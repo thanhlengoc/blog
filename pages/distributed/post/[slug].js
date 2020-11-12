@@ -10,8 +10,6 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
-import { useRouter } from 'next/router'
-
 
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
@@ -55,7 +53,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
       </article>
       <nav className="flex flex-wrap justify-between mb-10">
         {previousPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
+          <Link href={"/distributed/post/[slug]"} as={`/distributed/post/${previousPost.slug}`}>
             <a className="text-lg font-light">
               ← {previousPost.frontmatter.title}
             </a>
@@ -64,7 +62,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
           <div />
         )}
         {nextPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
+          <Link href={"/distributed/post/[slug]"} as={`/distributed/post/${nextPost.slug}`}>
             <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
           </Link>
         ) : (

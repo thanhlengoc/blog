@@ -1,6 +1,8 @@
 ---
 title: Spring Cloud Netflix Eureka
 date: 2020-11-07T22:40:32.169Z
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605169653/blog/0_bsprjy.png
+tag: Distributed
 description: Client-side discovery service
 ---
 

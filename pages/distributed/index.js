@@ -14,8 +14,8 @@ export default function DevOpsPage({posts}) {
                     <article key={slug}>
                         <header className="mb-2">
                             <h3 className="mb-2">
-                                <Link href={'/dev-ops/post/[slug]'}
-                                    as={`/dev-ops/post/${slug}`}
+                                <Link href={'/distributed/post/[slug]'}
+                                      as={`/distributed/post/${slug}`}
                                 >
                                     <a className="text-2xl font-bold font-display" style={{color:'#000'}}>
                                         {title}
