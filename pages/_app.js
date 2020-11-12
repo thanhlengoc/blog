@@ -1,9 +1,11 @@
-import "styles/global.css";
 import "typeface-open-sans";
 import "typeface-merriweather";
+
+// import css
+import "styles/global.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "styles/sidebar.css";
-import '../styles/my-swiper.scss';
+import '../styles/my-swiper.css';
 import 'swiper/swiper.scss';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core'

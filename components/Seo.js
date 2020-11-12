@@ -1,6 +1,6 @@
+import React from "react";
 import Head from "next/head";
 import { getSiteMetaData } from "utils/helpers";
-import React from "react";
 
 export default function SEO({ title, description = "" }) {
   const siteMetadata = getSiteMetaData();
@@ -24,8 +24,8 @@ export default function SEO({ title, description = "" }) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:creator" content={siteMetadata.social.twitter} />
-      <link rel="icon" type="image/png" href="/static/favicon.ico" />
-      <link rel="apple-touch-icon" href="/static/favicon.ico" />
+      <link rel="icon" type="image/png" href="./thanhle.jpeg" />
+      <link rel="apple-touch-icon" href="./thanhle.jpeg" />
     </Head>
   );
 }

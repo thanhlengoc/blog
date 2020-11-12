@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {okaidia} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import Layout from "components/Layout";
 import Image from "components/Image";
@@ -10,18 +11,20 @@ import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
+import {Badge} from "react-bootstrap";
+const toc = require("remark-toc");
 
 
 const CodeBlock = ({ language, value }) => {
-  return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
+  return <SyntaxHighlighter style={okaidia} language={language}>{value}</SyntaxHighlighter>;
 };
 
 const MarkdownImage = ({ alt, src }) => (
   <Image
     alt={alt}
-    src={require(`../../content/assets/${src}`)}
-    webpSrc={require(`../../content/assets/${src}?webp`)}
-    previewSrc={require(`../../content/assets/${src}?lqip`)}
+    src={require(`../../../content/assets/${src}`)}
+    webpSrc={require(`../../../content/assets/${src}?webp`)}
+    previewSrc={require(`../../../content/assets/${src}?lqip`)}
     className="w-full"
   />
 );
@@ -36,16 +39,20 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 
       <article style={{paddingTop:'1.7rem'}}>
         <header className="mb-8">
-          <h1 className="mb-2 text-4xl font-black leading-none font-display">
+          <h1 className="mb-2 text-5xl font-black leading-none font-display">
             {frontmatter.title}
           </h1>
-          <p className="text-sm">{frontmatter.date}</p>
+          <div style={{display: 'flex'}}>
+            <Badge className="mr-2" variant="warning" style={{height:'fit-content'}}>{frontmatter.tag}</Badge>
+            <p className="text-sm">{frontmatter.date}</p>
+          </div>
         </header>
         <ReactMarkdown
           className="mb-4 prose-sm prose sm:prose lg:prose-lg"
           escapeHtml={false}
           source={post.content}
           renderers={{ code: CodeBlock, image: MarkdownImage }}
+          // plugins={[toc]}
         />
         <hr className="mt-4" />
         <footer>
@@ -54,7 +61,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
       </article>
       <nav className="flex flex-wrap justify-between mb-10">
         {previousPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
+          <Link href={"/web-dev/post/[slug]"} as={`/web-dev/post/${previousPost.slug}`}>
             <a className="text-lg font-light">
               ← {previousPost.frontmatter.title}
             </a>
@@ -63,7 +70,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
           <div />
         )}
         {nextPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
+          <Link href={"/web-dev/post/[slug]"} as={`/web-dev/post/${nextPost.slug}`}>
             <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
           </Link>
         ) : (
@@ -87,7 +94,8 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostsSlugs("/all-posts");
+  const paths = getPostsSlugs("/web-dev");
+
   // generate the paths for the pages you want to render
   return {
     paths,
@@ -98,8 +106,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-
-  const postData = getPostBySlug(slug, "/all-posts");
+  const postData = getPostBySlug(slug, "/web-dev");
 
   if (!postData.previousPost) {
     postData.previousPost = null;

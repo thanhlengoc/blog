@@ -1,18 +1,16 @@
 .sidenav {
-/* width: 290px; */
 position: sticky;
 z-index: 1;
-top: 9.5rem;
-/* left: 29rem; */
+top: 8.2rem;
 background: #fff;
 overflow-x: hidden;
-margin-top: 2rem;
+margin-top: 1.7rem;
 }
 
 .sidenav a {
-padding: 7px 0;
+padding: 10px 0;
 text-decoration: none;
-/* font-size: 18px; */
+/*font-size: 16px;*/
 color: black;
 display: block;
 }
@@ -21,19 +19,7 @@ display: block;
     color: #064579;
 }
 
-.main {
-margin-left: 140px; /* Same width as the sidebar + left position in px */
-font-size: 28px; /* Increased text to enable scrolling */
-padding: 0px 10px;
-}
-
 @media screen and (max-height: 450px) {
 .sidenav {padding-top: 15px;}
 .sidenav a {font-size: 18px;}
-}
-
-.middle-dot {
-    font-size: 5em;
-    line-height: .4em;
-    color: gray;
 }

@@ -1,21 +1,20 @@
 import React from 'react'
 import Bio from '../../components/Bio'
 import Layout from '../../components/Layout'
+import SEO from "../../components/Seo";
 
-const GetStartedPage = () => {
+export default function GetStartedPage () {
 
     return (
         <Layout>
-            <div style={{paddingTop:'3rem'}}>
+            <SEO title="Get-started" />
+            <div style={{paddingTop:'1.7rem'}}>
             <header className="mb-8">
                 <h1 className="mb-2 text-5xl font-black leading-none font-display">
                     Getting started
                 </h1>
             </header>
-            <p>Welcome to ThanhLe documentation!</p>
-            <p>Where sharing technical.</p>
-            <p>Where sharing technical.</p>
-            <p>Where sharing technical.</p>
+            <p>Welcome to Le Ngoc Thanh Blog!</p>
             <hr className="mt-4" />
             <footer>
                 <Bio className="mt-8 mb-16" />
@@ -24,5 +23,3 @@ const GetStartedPage = () => {
         </Layout>
     )
 }
-
-export default GetStartedPage;

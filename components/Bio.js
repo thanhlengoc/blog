@@ -1,5 +1,5 @@
+import React from "react";
 import clsx from "clsx";
-
 import Image from "./Image";
 import { getSiteMetaData } from "utils/helpers";
 
@@ -18,8 +18,8 @@ export default function Bio({ className }) {
       <p className="text-base leading-7">
         Written by <b className="font-semibold">{author.name}</b>{" "}
         {author.summary}{" "}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          Follow me on twitter
+        <a href={social.github}>
+          Follow me on Github
         </a>
       </p>
     </div>

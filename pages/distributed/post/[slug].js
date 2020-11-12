@@ -11,7 +11,6 @@ import Bio from "components/Bio";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngry, faGrinAlt, faSmileWink, faDizzy } from '@fortawesome/free-solid-svg-icons'
 
-
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
 };
@@ -19,9 +18,9 @@ const CodeBlock = ({ language, value }) => {
 const MarkdownImage = ({ alt, src }) => (
   <Image
     alt={alt}
-    src={require(`../../content/assets/${src}`)}
-    webpSrc={require(`../../content/assets/${src}?webp`)}
-    previewSrc={require(`../../content/assets/${src}?lqip`)}
+    src={require(`../../../content/assets/${src}`)}
+    webpSrc={require(`../../../content/assets/${src}?webp`)}
+    previewSrc={require(`../../../content/assets/${src}?lqip`)}
     className="w-full"
   />
 );
@@ -54,7 +53,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
       </article>
       <nav className="flex flex-wrap justify-between mb-10">
         {previousPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
+          <Link href={"/distributed/post/[slug]"} as={`/distributed/post/${previousPost.slug}`}>
             <a className="text-lg font-light">
               ← {previousPost.frontmatter.title}
             </a>
@@ -63,7 +62,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
           <div />
         )}
         {nextPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
+          <Link href={"/distributed/post/[slug]"} as={`/distributed/post/${nextPost.slug}`}>
             <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
           </Link>
         ) : (
@@ -87,7 +86,7 @@ export default function Post({ post, frontmatter, nextPost, previousPost }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getPostsSlugs("/all-posts");
+  const paths = getPostsSlugs("/dev-ops");
   // generate the paths for the pages you want to render
   return {
     paths,
@@ -98,8 +97,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-
-  const postData = getPostBySlug(slug, "/all-posts");
+  const postData = getPostBySlug(slug, "/dev-ops");
 
   if (!postData.previousPost) {
     postData.previousPost = null;
