@@ -1,6 +1,8 @@
 ---
 title: Service Discovery with Consul
 date: 2020-07-28T22:40:32.169Z
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605249044/blog/consul-ambassador_ievkcs.png
+tag: Distributed
 description: Who doesn't like a long post showcasing the different headings?
 ---
 

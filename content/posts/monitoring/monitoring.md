@@ -1,6 +1,8 @@
 ---
 title: Monitoring with Prometheus and Grafana
 date: 2020-07-28T22:40:32.169Z
+postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605249117/blog/Prometheus-grafana_cjdhm6.png
+tag: Distributed
 description: Who doesn't like a long post showcasing the different headings?
 ---
 

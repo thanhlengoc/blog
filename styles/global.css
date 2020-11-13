@@ -30,8 +30,8 @@ p {
 }
 
 .emoji-react {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem !important;
+  height: 2rem !important;
   color: #6C757D;
   margin: 0 15px;
 }

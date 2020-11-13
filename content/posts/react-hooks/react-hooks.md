@@ -252,7 +252,7 @@ function FriendListItem(props) {
 State của mỗi component là hoàn toàn độc lập. Hook là một cách để sử dụng lại logic trạng thái, không phải chính trạng thái. 
 Trên thực tế, mỗi lệnh gọi tới một Hook có một trạng thái hoàn toàn bị cô lập - vì vậy ta thậm chí có thể sử dụng cùng một Hook tùy chỉnh hai lần trong một thành phần.
 
-Các móc tùy chỉnh mang tính quy ước hơn là một tính năng. Nếu tên của một hàm bắt đầu bằng "use" và nó gọi các Hook khác, React gọi nó là Hook tùy chỉnh. 
+Các hooks tùy chỉnh mang tính quy ước hơn là một tính năng. Nếu tên của một hàm bắt đầu bằng "use" và nó gọi các Hook khác, React gọi nó là Hook tùy chỉnh. 
 Quy ước đặt tên một cái gì đó là cách plugin linter của react có thể tìm thấy lỗi trong code bằng cách sử dụng Hooks.
 
 Chúng ta có thể viết các Hook tùy chỉnh bao gồm một loạt các trường hợp sử dụng như xử lý biểu mẫu, hoạt ảnh, đăng ký khai báo, bộ hẹn giờ và có thể nhiều thứ khác... 

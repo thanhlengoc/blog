@@ -24,8 +24,6 @@ module.exports = withPlugins([
             return {
                 '/': { page: '/' },
                 '/get-started': { page: '/get-started' },
-                '/web-dev': { page: '/web-dev'},
-                '/dev-ops': { page: '/dev-ops'},
             }
         },
     },

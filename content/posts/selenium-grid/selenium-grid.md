@@ -6,11 +6,11 @@ tag: Distributed
 date: 2020-11-07T11:00:00.000Z
 ---
 
-### Architecture
+### Architecture {#architecture}
     
 ![SeleniumGrid](seleniumgrid-1.png)
 
-### Setup
+### Setup {#setup}
 
 1. Install appium on ubuntu: [Install Selenium On Ubuntu](https://confusedcoders.com/general-programming/mobile/how-to-install-appium-in-ubuntu)
 2. Download Selenium Server (Grid): [Download Selenium](https://www.selenium.dev/downloads/ )
@@ -78,7 +78,7 @@ Let's take a look at some of the important configuration keys:
 - maxSession: the total number of sessions this node can run. This is useful in combination with maxInstances. For example, let's say we can run a total of 5 iPhone 8s and 5 iPhone 6s on this node, but the system gets overloaded when running more than 8 sessions at a time, of any kind. Then we'd set maxInstances to 5 for each device type, but maxSession to 8, so that we never try to run the theoretical max of 10.
 - hubHost, hubPort, and hubProtocol: the connection details for the Grid hub server.
 
-### Starting up the grid
+### Starting up the grid 
 
 ```bash
 # Window 1: the Grid hub
