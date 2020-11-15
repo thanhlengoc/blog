@@ -136,10 +136,13 @@ export default function CreatePost () {
                                 },
                                 previewButton: {
                                     style: {padding: '5px'}
+                                },
+                                textArea: {
+                                    style: {background: '#E1EFF1', minHeight: "500px"}
                                 }
                             }}
                             paste={{saveImage: saveToCloud}}
-                            minEditorHeight={500}
+                            // minEditorHeight={500}
                         />
                     </div>
                     <div className="col-sm-3">
