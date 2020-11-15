@@ -54,7 +54,7 @@ export default function Admin ( {allPosts} ) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const allPosts = await allPostFromFire()
     return {
         props: { allPosts },
