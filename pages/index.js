@@ -5,15 +5,14 @@ import Bio from '../components/Bio'
 import {getSortedPosts} from "../utils/posts";
 import Link from "next/link";
 import {Badge, Col, Row} from "react-bootstrap";
-// import Sidebar from "../components/Sidebar";
 import Paging from "../components/Paging";
 import Sidebar from "../components/Sidebar";
 
-export default function WebDevPage({posts}) {
+export default function Home({posts}) {
+    // console.log("posts: ", posts)
     return (
         <Layout>
             <SEO title="Web Dev"/>
-            {/*<div style={{paddingTop: '1.7rem'}}>*/}
                 <Row style={{paddingTop: '1.7rem'}}>
                     <Col xs='12' sm='9'>
                         {posts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
@@ -56,7 +55,6 @@ export default function WebDevPage({posts}) {
                         <Sidebar/>
                     </Col>
                 </Row>
-            {/*</div>*/}
         </Layout>
     )
 }
@@ -69,3 +67,4 @@ export async function getStaticProps() {
         },
     };
 }
+

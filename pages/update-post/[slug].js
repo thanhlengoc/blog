@@ -7,19 +7,26 @@ import CodeBlock from "../../components/CodeBlock";
 import {bufferToBase64, loadSuggestions} from "../../utils/createPostUtils";
 import { FaMarkdown } from 'react-icons/fa';
 import {Form, Button, Spinner} from "react-bootstrap";
-import {uploadImageToCloud, uploadPost} from "../../utils/apiUtils";
+import {
+    allPostFromFire, deletePostByDoc,
+    getDocBySlug,
+    updatePost,
+    uploadImageToCloud,
+} from "../../utils/apiUtils";
 import {toast} from "react-toastify";
-import {uniqDocId} from "../../conf/constants";
 import moment from 'moment';
 
-export default function CreatePost () {
+export default function UpdatePost ({post, frontmatter}) {
+
     const [selectedTab, setSelectedTab] = useState("write");
-    const [title, setTitle] = useState('');
-    const [tag, setTag] = useState('');
-    const [description, setDescription] = useState('');
-    const postDate = moment().format("DD:MM:YYYY HH:mm:ss")
-    const [content, setContent] = useState("");
-    const [loading, setLoading] = useState(false)
+    const [title, setTitle] = useState(frontmatter.title);
+    const [tag, setTag] = useState(frontmatter.tag);
+    const [description, setDescription] = useState(frontmatter.description);
+    const postDate = moment().format("DD/MM/YYYY HH:mm:ss")
+    const [content, setContent] = useState(post.content);
+    const [loading, setLoading] = useState(false);
+    const [delLoading, setDelLoading] = useState(false);
+    const srcPreview = frontmatter ? frontmatter.postImage : ""
 
     const saveToCloud = async function* (data) {
         // Promise that waits for "time" milliseconds
@@ -69,12 +76,20 @@ export default function CreatePost () {
 
     const handleSubmit = async function (event) {
         event.preventDefault();
+        setLoading(true);
+
         const preview = document.getElementById('previewImage');
 
-        setLoading(true);
-        const imageCloud = await uploadImageToCloud(preview.src)
-        const imageUrl = imageCloud ? imageCloud.url : ""
-        const frontmatter = {
+        let imageUrl = "";
+        if (preview.src.startsWith("data:image")) {
+            const imageCloud = await uploadImageToCloud(preview.src)
+            imageUrl = imageCloud ? imageCloud.url : ""
+        }
+        else {
+            imageUrl = frontmatter.postImage;
+        }
+
+        const frontmatterUpdate = {
             title: title,
             description: description,
             postImage: imageUrl,
@@ -82,27 +97,44 @@ export default function CreatePost () {
             date: postDate
         }
 
-        const docId = title.replace(/\s/g, '-').toLowerCase() + "-" + uniqDocId;
+        const docId = post.slug;
+        await updatePost(docId, frontmatterUpdate, content)
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id)
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+                setLoading(false);
+            })
 
-        await uploadPost(docId, frontmatter, content)
-                .then(function(docRef) {
-                        console.log("Document written with ID: ", docRef.id)
-                        setTitle('');
-                        setContent('');
-                        setTag('');
-                        setDescription('');
-                        clearFileInput()
-                        toast.success("Đăng bài thành công")
-                        setLoading(false);
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                    setLoading(false);
-                })
+        toast.success("Cập nhật thành công")
+        setLoading(false);
 
 
         setTimeout(() => {
             setLoading(false);
+        }, 5000)
+    }
+
+    const handleDeletePost = async function (event) {
+        event.preventDefault()
+        setDelLoading(true)
+        await deletePostByDoc(post.slug)
+            .then(function() {
+                console.log("Document successfully deleted!");
+                setTitle('');
+                setContent('');
+                setTag('');
+                setDescription('');
+                clearFileInput()
+                toast.success("Xoá bài thành công")
+                setDelLoading(false)
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+                setDelLoading(false)
+            });
+        setTimeout(() => {
+            setDelLoading(false)
         }, 5000)
     }
 
@@ -186,23 +218,37 @@ export default function CreatePost () {
                                               name="postImage"
                                               onChange={previewFile}
                                               accept="image/*" />
-                                <img className="mt-1" id="previewImage" src="" height="150px" alt="Image preview..."/>
+                                <img className="mt-1" id="previewImage" src={srcPreview} height="150px" alt="Image preview..."/>
                                 <a href="#" onClick={clearFileInput}>Clear File</a>
                             </Form.Group>
 
-                            <Button variant="outline-primary"
-                                    size="sm"
-                                    type="submit"
-                                    disabled={loading}
-                                    onClick={handleSubmit}>
-                                {
-                                    loading ?
-                                        <>
-                                            <Spinner className="mr-2" animation="grow" size="sm" /> Posting
-                                        </>
-                                         : <>Public post</>
-                                }
-                            </Button>
+                            <div className="d-flex flex-row">
+                                <Button variant="outline-primary"
+                                        size="sm" className="mr-2"
+                                        type="submit"
+                                        disabled={loading}
+                                        onClick={handleSubmit}>
+                                    {
+                                        loading ?
+                                            <>
+                                                <Spinner className="mr-2" animation="grow" size="sm" /> Updating
+                                            </>
+                                            : <>Update</>
+                                    }
+                                </Button>
+                                <Button variant="outline-danger"
+                                        size="sm" className="mr-2"
+                                        disabled={delLoading}
+                                        onClick={handleDeletePost}>
+                                    {
+                                        delLoading ?
+                                            <>
+                                                <Spinner className="mr-2" animation="grow" size="sm" /> Deleting
+                                            </>
+                                            : <>Delete</>
+                                    }
+                                </Button>
+                            </div>
                         </Form>
                     </div>
                 </div>
@@ -210,3 +256,21 @@ export default function CreatePost () {
         </Layout>
     )
 }
+
+export async function getStaticPaths() {
+    const allPosts = await allPostFromFire();
+    const paths = allPosts.map((item) => ({
+        params: { slug: item.slug },
+    }))
+    // generate the paths for the pages you want to render
+    return {
+        paths: paths,
+        fallback: false,
+    };
+}
+
+export async function getStaticProps({params: {slug}}) {
+    const postData = await getDocBySlug(slug);
+    return { props: postData };
+}
+

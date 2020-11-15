@@ -1,10 +1,7 @@
-// import { useRouter } from "next/router";
 import Header from './Header';
-import {Col, Row} from "react-bootstrap";
 import Banner from "./Banner";
-import Sidebar from "./Sidebar"
 import React from "react";
-
+import { ToastContainer } from 'react-toastify';
 // antialiased font-body
 
 export default function Layout({children}) {
@@ -15,15 +12,8 @@ export default function Layout({children}) {
             <Header/>
             <div className="max-w-screen-lg px-4 py-12 mx-auto font-light" style={{paddingTop: '0'}}>
                 <main>{children}</main>
-                {/*<Row>*/}
-                {/*    <Col xs='12' sm='3'>*/}
-                {/*        <Sidebar/>*/}
-                {/*    </Col>*/}
-                {/*    <Col xs='12' sm='9'>*/}
-                {/*        <main>{children}</main>*/}
-                {/*    </Col>*/}
-                {/*</Row>*/}
             </div>
+            <ToastContainer autoClose={2500}/>
         </div>
     );
 }

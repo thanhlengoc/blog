@@ -3,17 +3,19 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
 import Layout from "components/Layout";
 import SEO from "components/Seo";
-import {getPostBySlug, getPostsSlugs} from "utils/posts";
 import Bio from "components/Bio";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngry, faGrinAlt, faSmileWink, faDizzy} from '@fortawesome/free-solid-svg-icons'
 import {Badge, Col, Row} from "react-bootstrap";
-import CodeBlock from "../../components/CodeBlock";
-import MarkdownImage from "../../components/MarkdownImage";
+import CodeBlock from "../../../components/CodeBlock";
+import MarkdownImage from "../../../components/MarkdownImage";
 import Toc from 'react-auto-toc'
+import {allPostFromFire, getPostBySlug} from "../../../utils/apiUtils";
 
-export default function Post({post, frontmatter, nextPost, previousPost}) {
-    const content = '# test \n your markdown Content # test2\n'
+export default function PostFire({post, frontmatter, nextPost, previousPost}) {
+
+    const content = '# test \n your markdown Content # test2\n';
+
     return (
         <Layout>
             <SEO
@@ -46,7 +48,7 @@ export default function Post({post, frontmatter, nextPost, previousPost}) {
                     </article>
                     <nav className="flex flex-wrap justify-between mb-10">
                         {previousPost ? (
-                            <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
+                            <Link href={"/post-fire/content/[slug]"} as={`/post-fire/content/${previousPost.slug}`}>
                                 <a className="text-lg font-light">
                                     ← {previousPost.frontmatter.title}
                                 </a>
@@ -55,7 +57,7 @@ export default function Post({post, frontmatter, nextPost, previousPost}) {
                             <div/>
                         )}
                         {nextPost ? (
-                            <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
+                            <Link href={"/post-fire/content/[slug]"} as={`/post-fire/content/${nextPost.slug}`}>
                                 <a className="text-lg font-light">{nextPost.frontmatter.title} →</a>
                             </Link>
                         ) : (
@@ -88,19 +90,21 @@ export default function Post({post, frontmatter, nextPost, previousPost}) {
 }
 
 export async function getStaticPaths() {
-    const paths = getPostsSlugs("");
-
-    console.log("paths: ", paths);
-
+    const allPosts = await allPostFromFire();
+    const paths = allPosts.map((item) => ({
+        params: {
+            slug: item.slug,
+        },
+    }))
     // generate the paths for the pages you want to render
     return {
-        paths,
-        fallback: false, // false if you know all the slugs that you want to generate ahead of time
+        paths: paths,
+        fallback: false,
     };
 }
 
 export async function getStaticProps({params: {slug}}) {
-    const postData = getPostBySlug(slug, "");
+    const postData = await getPostBySlug(slug);
 
     if (!postData.previousPost) {
         postData.previousPost = null;
@@ -110,5 +114,5 @@ export async function getStaticProps({params: {slug}}) {
         postData.nextPost = null;
     }
 
-    return {props: postData};
+    return { props: postData };
 }

@@ -8,6 +8,7 @@ import "styles/sidebar.css";
 import '../styles/my-swiper.css';
 import 'swiper/swiper.scss';
 import "react-mde/lib/styles/css/react-mde-all.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 import { config, library } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'

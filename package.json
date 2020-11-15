@@ -23,6 +23,7 @@
     "imagemin-optipng": "^8.0.0",
     "lazysizes": "^5.2.2",
     "lqip-loader": "^2.2.1",
+    "moment": "^2.29.1",
     "next": "10.0.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
@@ -35,12 +36,14 @@
     "react-markdown": "^5.0.2",
     "react-mde": "^11.0.0",
     "react-syntax-highlighter": "^15.2.1",
+    "react-toastify": "^6.1.0",
     "remark-toc": "^7.0.0",
     "sass": "^1.28.0",
     "styled-components": "^5.2.1",
     "swiper": "^5.4.1",
     "typeface-merriweather": "^1.1.13",
     "typeface-open-sans": "^1.1.13",
+    "uuid": "^8.3.1",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
