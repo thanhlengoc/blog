@@ -3,7 +3,7 @@ title: Code-Splitting in ReactJS
 date: 2020-11-10T22:40:32.169Z
 postImage: https://res.cloudinary.com/dpijfwgsf/image/upload/v1605170254/blog/maxresdefault_xk7hba.jpg
 tag: Front-end
-description: Client-side discovery service
+description: How to code splitting in reactJS?
 ---
 
 ##### Table of Contents

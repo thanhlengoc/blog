@@ -17,7 +17,7 @@ export default function CreatePost () {
     const [title, setTitle] = useState('');
     const [tag, setTag] = useState('');
     const [description, setDescription] = useState('');
-    const postDate = moment().format("DD:MM:YYYY HH:mm:ss")
+    const postDate = moment().format("DD/MM/YYYY HH:mm:ss")
     const [content, setContent] = useState("");
     const [loading, setLoading] = useState(false)
 
@@ -85,8 +85,8 @@ export default function CreatePost () {
         const docId = title.replace(/\s/g, '-').toLowerCase() + "-" + uniqDocId;
 
         await uploadPost(docId, frontmatter, content)
-                .then(function(docRef) {
-                        console.log("Document written with ID: ", docRef.id)
+                .then(function() {
+                        console.log("Document successfully written!")
                         setTitle('');
                         setContent('');
                         setTag('');
@@ -97,13 +97,15 @@ export default function CreatePost () {
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
+                    toast.error("Opp! Something when wrong. Please try again!")
                     setLoading(false);
                 })
 
 
         setTimeout(() => {
+            toast.warning("Quá thời gian đăng bài.")
             setLoading(false);
-        }, 5000)
+        }, 10000)
     }
 
     return (

@@ -264,7 +264,6 @@ export async function getStaticPaths() {
     const paths = allPosts.map((item) => ({
         params: { slug: item.slug },
     }))
-    // generate the paths for the pages you want to render
     return {
         paths: paths,
         fallback: false,
