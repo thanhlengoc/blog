@@ -11,8 +11,8 @@ import CodeBlock from "../../../components/CodeBlock";
 import MarkdownImage from "../../../components/MarkdownImage";
 import Toc from 'react-auto-toc'
 import {allPostFromFire, getPostBySlug} from "../../../utils/apiUtils";
-// import fireDb from "../../../conf/fire-config";
-// import {collectionId} from "../../../conf/constants";
+import fireDb from "../../../conf/fire-config";
+import {collectionId} from "../../../conf/constants";
 
 export default function PostFire({post, frontmatter, nextPost, previousPost}) {
 
@@ -91,22 +91,36 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
     );
 }
 
-export async function getStaticPaths() {
-    const allPosts = await allPostFromFire();
-    const paths = allPosts.map((item) => ({
-        params: {
-            slug: item.slug,
-        },
-    }))
-    // generate the paths for the pages you want to render
-    return {
-        paths: paths,
-        fallback: false,
-    };
-}
+// export async function getStaticPaths() {
+//     const allPosts = await allPostFromFire();
+//     const paths = allPosts.map((item) => ({
+//         params: {
+//             slug: item.slug,
+//         },
+//     }))
+//     // generate the paths for the pages you want to render
+//     return {
+//         paths: paths,
+//         fallback: false,
+//     };
+// }
+//
+// export async function getStaticProps({params: {slug}}) {
+//     const postData = await getPostBySlug(slug);
+//
+//     if (!postData.previousPost) {
+//         postData.previousPost = null;
+//     }
+//
+//     if (!postData.nextPost) {
+//         postData.nextPost = null;
+//     }
+//
+//     return { props: postData };
+// }
 
-export async function getStaticProps({params: {slug}}) {
-    const postData = await getPostBySlug(slug);
+export const getServerSideProps = async ({ query }) => {
+    const postData = await getPostBySlug(query.slug);
 
     if (!postData.previousPost) {
         postData.previousPost = null;
@@ -118,4 +132,3 @@ export async function getStaticProps({params: {slug}}) {
 
     return { props: postData };
 }
-
