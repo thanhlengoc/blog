@@ -72,7 +72,7 @@ export default function CreatePost () {
         const preview = document.getElementById('previewImage');
 
         setLoading(true);
-        const imageCloud = await uploadImageToCloud(preview.src)
+        const imageCloud = preview.src !== "" ? await uploadImageToCloud(preview.src) : null
         const imageUrl = imageCloud ? imageCloud.url : ""
         const frontmatter = {
             title: title,
@@ -144,7 +144,6 @@ export default function CreatePost () {
                                 }
                             }}
                             paste={{saveImage: saveToCloud}}
-                            // minEditorHeight={500}
                         />
                     </div>
                     <div className="col-sm-3">
@@ -196,8 +195,7 @@ export default function CreatePost () {
                             </Form.Group>
 
                             <Button variant="outline-primary"
-                                    size="sm"
-                                    type="submit"
+                                    size="sm" type="submit"
                                     disabled={loading}
                                     onClick={handleSubmit}>
                                 {
