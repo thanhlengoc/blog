@@ -103,7 +103,7 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getStaticProps({params: {slug}}) {
+export async function getInitialProps({params: {slug}}) {
     const postData = await getPostBySlug(slug);
 
     if (!postData.previousPost) {

@@ -6,13 +6,19 @@ import Link from "next/link";
 import {Badge, Col, Row} from "react-bootstrap";
 import Paging from "../../components/Paging";
 import Sidebar from "../../components/Sidebar";
-import {allPostFromFire} from "../../utils/apiUtils";
+import {allPostFromFire, getPostByDoc} from "../../utils/apiUtils";
+// import useSWR from "swr";
 
 export default function HomeFire( {allPosts} ) {
 
+    // const docId = "latest-doc"
+    // const { data, error } = useSWR(docId, getPostByDoc);
+    // if (error) return "An error has occurred.";
+    // if (!data) return "Loading...";
+
     return (
         <Layout>
-            <SEO title="Web Dev"/>
+            <SEO title="Post cloud"/>
             <Row style={{paddingTop: '1.7rem'}}>
                 <Col xs='12' sm='9'>
                     {allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
@@ -34,7 +40,7 @@ export default function HomeFire( {allPosts} ) {
                                                 </a>
                                             </Link>
                                         </h3>
-                                        <Badge variant="info">{tag}</Badge>{' / '}
+                                        <Badge variant="info">{tag}</Badge>{' | '}
                                         <span className="text-sm font-bold" style={{color: "#6C757D"}}>{date}</span>
                                     </header>
                                     <section>
