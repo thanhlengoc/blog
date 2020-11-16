@@ -22,7 +22,7 @@ export default function Login () {
                 setNotification(err.message)
                 setTimeout(() => {
                     setNotification('')
-                }, 5000)
+                }, 3000)
             })
         setUsername('')
         setPassword('')

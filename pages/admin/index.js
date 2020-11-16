@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../../components/Layout";
 import SEO from "../../components/Seo";
-import {allPostFromFire} from "../../utils/apiUtils";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import {Badge, Col, Row} from "react-bootstrap";
+import {Badge, Col, Row, Spinner} from "react-bootstrap";
 import fireDb from "../../conf/fire-config";
 import {toast} from "react-toastify";
+import {collectionId} from "../../conf/constants";
 
-export default function Admin ( {allPosts} ) {
+export default function Admin () {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     fireDb.auth()
         .onAuthStateChanged((user) => {
@@ -24,9 +26,19 @@ export default function Admin ( {allPosts} ) {
             }
         })
 
-    useEffect(() => {
-
-    }, [])
+    useEffect( () => {
+        setLoading(true)
+        fireDb.firestore()
+            .collection(collectionId)
+            .onSnapshot(snap => {
+                const result = snap.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setBlogs(result);
+                setLoading(false);
+            });
+    }, []);
 
     const handleLogout = () => {
         fireDb.auth()
@@ -47,14 +59,19 @@ export default function Admin ( {allPosts} ) {
                             <a href="/create-post" className="mr-2">
                                 <FontAwesomeIcon icon={faPlus}/> New Post
                             </a> |
-                            <a href="#" className="ml-2" onClick={handleLogout}>
+                            <a className="ml-2" onClick={handleLogout}>
                                 <FontAwesomeIcon icon={faSignOutAlt}/> Logout
                             </a>
                         </div>
                         <hr className="mt-3 mb-3" />
                         <Row>
                             <Col xs='12' sm='12'>
-                                {allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
+                                {
+                                    loading ?
+                                        <span>
+                                            <Spinner animation="grow" variant="secondary" /> Loading...
+                                        </span> :
+                                    blogs.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
                                     <article key={slug}>
                                         <div className="row">
                                             <div className="col-sm-8">
@@ -96,9 +113,9 @@ export default function Admin ( {allPosts} ) {
     )
 }
 
-export async function getServerSideProps() {
-    const allPosts = await allPostFromFire()
-    return {
-        props: { allPosts },
-    }
-}
+// export async function getServerSideProps() {
+//     const allPosts = await allPostFromFire()
+//     return {
+//         props: { allPosts },
+//     }
+// }

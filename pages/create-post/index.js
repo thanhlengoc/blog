@@ -72,8 +72,10 @@ export default function CreatePost () {
         const preview = document.getElementById('previewImage');
 
         setLoading(true);
-        const imageCloud = preview.src !== "" ? await uploadImageToCloud(preview.src) : null
+        const imageCloud = preview.src.startsWith("https://res.cloudinary.com/") ?
+                            await uploadImageToCloud(preview.src) : null
         const imageUrl = imageCloud ? imageCloud.url : ""
+
         const frontmatter = {
             title: title,
             description: description,
@@ -201,7 +203,7 @@ export default function CreatePost () {
                                 {
                                     loading ?
                                         <>
-                                            <Spinner className="mr-2" animation="grow" size="sm" /> Posting
+                                            <Spinner className="mr-2" animation="grow" size="sm" /> Posting..
                                         </>
                                          : <>Public post</>
                                 }

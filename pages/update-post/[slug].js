@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
 import SEO from "../../components/Seo";
 import ReactMde from "react-mde";
@@ -9,7 +10,7 @@ import { FaMarkdown } from 'react-icons/fa';
 import {Form, Button, Spinner} from "react-bootstrap";
 import {
     allPostFromFire, deletePostByDoc,
-    getDocBySlug,
+    getDocBySlug, getPostBySlug,
     updatePost,
     uploadImageToCloud,
 } from "../../utils/apiUtils";
@@ -17,7 +18,7 @@ import {toast} from "react-toastify";
 import moment from 'moment';
 
 export default function UpdatePost ({post, frontmatter}) {
-
+    const router = useRouter();
     const [selectedTab, setSelectedTab] = useState("write");
     const [title, setTitle] = useState(frontmatter.title);
     const [tag, setTag] = useState(frontmatter.tag);
@@ -129,6 +130,7 @@ export default function UpdatePost ({post, frontmatter}) {
                 clearFileInput()
                 toast.success("Xoá bài thành công")
                 setDelLoading(false)
+                router.push("/admin")
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
                 setDelLoading(false)
@@ -259,19 +261,23 @@ export default function UpdatePost ({post, frontmatter}) {
     )
 }
 
-export async function getStaticPaths() {
-    const allPosts = await allPostFromFire();
-    const paths = allPosts.map((item) => ({
-        params: { slug: item.slug },
-    }))
-    return {
-        paths: paths,
-        fallback: false,
-    };
-}
+// export async function getStaticPaths() {
+//     const allPosts = await allPostFromFire();
+//     const paths = allPosts.map((item) => ({
+//         params: { slug: item.slug },
+//     }))
+//     return {
+//         paths: paths,
+//         fallback: false,
+//     };
+// }
+//
+// export async function getStaticProps({params: {slug}}) {
+//     const postData = await getDocBySlug(slug);
+//     return { props: postData };
+// }
 
-export async function getStaticProps({params: {slug}}) {
-    const postData = await getDocBySlug(slug);
+export const getServerSideProps = async ({ query }) => {
+    const postData = await getDocBySlug(query.slug);
     return { props: postData };
 }
-

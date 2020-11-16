@@ -3,10 +3,9 @@ import Layout from '../../components/Layout';
 import SEO from "../../components/Seo";
 import Bio from '../../components/Bio';
 import Link from "next/link";
-import {Badge, Col, Row} from "react-bootstrap";
+import {Badge, Col, Row, Spinner} from "react-bootstrap";
 import Paging from "../../components/Paging";
 import Sidebar from "../../components/Sidebar";
-// import {allPostFromFire,} from "../../utils/apiUtils";
 import fireDb from "../../conf/fire-config";
 import {collectionId} from "../../conf/constants";
 
@@ -14,8 +13,9 @@ import {collectionId} from "../../conf/constants";
 export default function HomeFire() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false);
+    // const { data, error } = useSWR(allPostFromFire)
 
-    useEffect(() => {
+    useEffect (() => {
         setLoading(true)
         fireDb.firestore()
             .collection(collectionId)
@@ -35,9 +35,7 @@ export default function HomeFire() {
             <Row style={{paddingTop: '1.7rem'}}>
                 <Col xs='12' sm='9'>
                     {
-                        loading ? <span>Loading...</span> : null
-                    }
-                    {
+                        loading ? <span><Spinner animation="grow" variant="secondary" /> Loading...</span> :
                         blogs.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
                             <article key={slug}>
                                 <div className="row">
@@ -69,7 +67,9 @@ export default function HomeFire() {
                             </article>
                         ))
                     }
-                    <Paging/>
+                    {
+                        !loading ? <Paging/> : null
+                    }
                     <hr className="mt-3 mb-3"/>
                     <footer>
                         <Bio className="mt-8 mb-16"/>
