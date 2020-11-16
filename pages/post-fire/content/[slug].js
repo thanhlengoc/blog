@@ -11,6 +11,8 @@ import CodeBlock from "../../../components/CodeBlock";
 import MarkdownImage from "../../../components/MarkdownImage";
 import Toc from 'react-auto-toc'
 import {allPostFromFire, getPostBySlug} from "../../../utils/apiUtils";
+// import fireDb from "../../../conf/fire-config";
+// import {collectionId} from "../../../conf/constants";
 
 export default function PostFire({post, frontmatter, nextPost, previousPost}) {
 
@@ -103,7 +105,7 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getInitialProps({params: {slug}}) {
+export async function getStaticProps({params: {slug}}) {
     const postData = await getPostBySlug(slug);
 
     if (!postData.previousPost) {
@@ -116,3 +118,4 @@ export async function getInitialProps({params: {slug}}) {
 
     return { props: postData };
 }
+

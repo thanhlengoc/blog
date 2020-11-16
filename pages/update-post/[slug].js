@@ -270,7 +270,7 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getInitialProps({params: {slug}}) {
+export async function getStaticProps({params: {slug}}) {
     const postData = await getDocBySlug(slug);
     return { props: postData };
 }
