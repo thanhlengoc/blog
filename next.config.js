@@ -16,4 +16,11 @@ module.exports = withPlugins([
     {
         assetPrefix: '.'
     },
+    {
+        exportPathMap: function () {
+            return {
+                '/': { page: '/' }
+            }
+        }
+    }
 ]);

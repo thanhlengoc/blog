@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown/with-html";
 import CodeBlock from "../../components/CodeBlock";
 import {bufferToBase64, loadSuggestions} from "../../utils/createPostUtils";
 import { FaMarkdown } from 'react-icons/fa';
-import {Form, Button, Spinner} from "react-bootstrap";
+import {Form, Button, Spinner, Modal} from "react-bootstrap";
 import {
     allPostFromFire, deletePostByDoc,
     getDocBySlug, getPostBySlug,
@@ -28,6 +28,10 @@ export default function UpdatePost ({post, frontmatter}) {
     const [loading, setLoading] = useState(false);
     const [delLoading, setDelLoading] = useState(false);
     const srcPreview = frontmatter ? frontmatter.postImage : ""
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const saveToCloud = async function* (data) {
         // Promise that waits for "time" milliseconds
@@ -130,12 +134,15 @@ export default function UpdatePost ({post, frontmatter}) {
                 clearFileInput()
                 toast.success("Xoá bài thành công")
                 setDelLoading(false)
+                handleClose()
                 router.push("/admin")
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
+                handleClose()
                 setDelLoading(false)
             });
         setTimeout(() => {
+            handleClose()
             setDelLoading(false)
         }, 5000)
     }
@@ -242,40 +249,41 @@ export default function UpdatePost ({post, frontmatter}) {
                                 </Button>
                                 <Button variant="outline-danger"
                                         size="sm" className="mr-2"
-                                        disabled={delLoading}
-                                        onClick={handleDeletePost}>
-                                    {
-                                        delLoading ?
-                                            <>
-                                                <Spinner className="mr-2" animation="grow" size="sm" /> Deleting
-                                            </>
-                                            : <>Delete</>
-                                    }
+                                        onClick={handleShow}>
+                                    Delete
                                 </Button>
                             </div>
                         </Form>
                     </div>
                 </div>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Xoá bài viết</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Bạn có chắc chắn muốn xoá bài viết: {title} ?
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" size="sm" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="danger" size="sm"
+                                disabled={delLoading}
+                                onClick={handleDeletePost}>
+                            {
+                                delLoading ?
+                                    <>
+                                        <Spinner className="mr-2" animation="grow" size="sm" /> Deleting..
+                                    </>
+                                    : <>Delete</>
+                            }
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </Layout>
     )
 }
-
-// export async function getStaticPaths() {
-//     const allPosts = await allPostFromFire();
-//     const paths = allPosts.map((item) => ({
-//         params: { slug: item.slug },
-//     }))
-//     return {
-//         paths: paths,
-//         fallback: false,
-//     };
-// }
-//
-// export async function getStaticProps({params: {slug}}) {
-//     const postData = await getDocBySlug(slug);
-//     return { props: postData };
-// }
 
 export const getServerSideProps = async ({ query }) => {
     const postData = await getDocBySlug(query.slug);

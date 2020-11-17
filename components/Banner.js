@@ -31,7 +31,7 @@ const Banner = () => {
     return (
         <div className="font-light" style={bannerStyle}>
             <div style={inner}>
-                <a href="/posts" style={aStyle}>
+                <a href="/" style={aStyle}>
                     Home
                 </a>
                 <a href="/admin" style={aStyle}>

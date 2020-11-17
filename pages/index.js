@@ -29,7 +29,7 @@ export default function Home() {
 
     return (
         <Layout>
-            <SEO title="Post cloud"/>
+            <SEO title="All Posts"/>
             <Row style={{paddingTop: '1.7rem'}}>
                 <Col xs='12' sm='9'>
                     {
