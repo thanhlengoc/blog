@@ -256,7 +256,7 @@ export default function UpdatePost ({post, frontmatter}) {
                         </Form>
                     </div>
                 </div>
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Xoá bài viết</Modal.Title>
                     </Modal.Header>
