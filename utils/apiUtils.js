@@ -1,5 +1,6 @@
 import {cloudinaryUrl, collectionId, unsignedUploadPreset} from "../conf/constants";
 import fireDb from "../conf/fire-config";
+import moment from 'moment';
 
 export async function uploadImageToCloud (dataUrl) {
     const fd = new FormData();
@@ -44,7 +45,13 @@ export async function getPostByDoc(docId) {
 
 export async function allPostFromFire () {
     const snapshot = await fireDb.firestore().collection(collectionId).get()
-    return snapshot.docs.map(doc => doc.data());
+
+    const data = snapshot.docs.map(doc => doc.data())
+
+    return data.sort((a, b) =>
+        moment(b.frontmatter.date, "DD/MM/YYYY HH:mm:ss").format("x") -
+        moment(a.frontmatter.date, "DD/MM/YYYY HH:mm:ss").format("x")
+    )
 }
 
 export async function getAllDocFromFire () {
@@ -77,4 +84,22 @@ export async function getDocBySlug (slug) {
 export async function deletePostByDoc(docId) {
     return await fireDb.firestore()
         .collection(collectionId).doc(docId).delete()
+}
+
+export function onAuthStateChange(callback) {
+    return fireDb.auth().onAuthStateChanged(user => {
+        if (user) {
+            callback({loggedIn: true});
+        } else {
+            callback({loggedIn: false});
+        }
+    });
+}
+
+export function onLogin(username, password) {
+    return fireDb.auth().signInWithEmailAndPassword(username, password);
+}
+
+export function onLogout() {
+    return fireDb.auth().signOut();
 }

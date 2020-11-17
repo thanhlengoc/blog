@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Layout from '../../components/Layout'
+import { useRouter } from 'next/router'
 import SEO from "../../components/Seo";
 import ReactMde from "react-mde";
 import ReactMarkdown from "react-markdown/with-html";
@@ -13,6 +14,7 @@ import {uniqDocId} from "../../conf/constants";
 import moment from 'moment';
 
 export default function CreatePost () {
+    const router = useRouter();
     const [selectedTab, setSelectedTab] = useState("write");
     const [title, setTitle] = useState('');
     const [tag, setTag] = useState('');
@@ -96,13 +98,13 @@ export default function CreatePost () {
                         clearFileInput()
                         toast.success("Đăng bài thành công")
                         setLoading(false);
+                        router.push("/admin")
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                     toast.error("Opp! Something when wrong. Please try again!")
                     setLoading(false);
                 })
-
 
         setTimeout(() => {
             toast.warning("Quá thời gian đăng bài.")

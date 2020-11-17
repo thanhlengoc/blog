@@ -4,11 +4,10 @@ import SEO from "../../components/Seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import {Badge, Col, Row, Spinner} from "react-bootstrap";
+import {Badge, Col, Row} from "react-bootstrap";
 import fireDb from "../../conf/fire-config";
 import {toast} from "react-toastify";
-import {collectionId} from "../../conf/constants";
-import {allPostFromFire} from "../../utils/apiUtils";
+import {allPostFromFire, onLogout} from "../../utils/apiUtils";
 
 export default function Admin({allPosts}) {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -18,7 +17,6 @@ export default function Admin({allPosts}) {
 
     fireDb.auth()
         .onAuthStateChanged((user) => {
-            // setLoadUser(true)
             if (user) {
                 console.log("user: ", user.email)
                 setUserEmail(user.email)
@@ -29,9 +27,7 @@ export default function Admin({allPosts}) {
         })
 
     const handleLogout = () => {
-        fireDb.auth()
-            .signOut()
-            .then(() => {
+        onLogout().then(() => {
                 toast.success("Đăng xuất thành công.")
             });
     }

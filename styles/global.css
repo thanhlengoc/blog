@@ -43,7 +43,7 @@ p {
 
 .scrollTop {
   position: fixed;
-  bottom: 65px;
+  bottom: 60px;
   right: 50px;
   align-items: center;
   height: 40px;

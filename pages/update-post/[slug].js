@@ -8,9 +8,8 @@ import CodeBlock from "../../components/CodeBlock";
 import {bufferToBase64, loadSuggestions} from "../../utils/createPostUtils";
 import { FaMarkdown } from 'react-icons/fa';
 import {Form, Button, Spinner, Modal} from "react-bootstrap";
-import {
-    allPostFromFire, deletePostByDoc,
-    getDocBySlug, getPostBySlug,
+import { deletePostByDoc,
+    getDocBySlug,
     updatePost,
     uploadImageToCloud,
 } from "../../utils/apiUtils";
