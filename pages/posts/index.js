@@ -13,7 +13,6 @@ import {collectionId} from "../../conf/constants";
 export default function HomeFire() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false);
-    // const { data, error } = useSWR(allPostFromFire)
 
     useEffect (() => {
         setLoading(true)
@@ -46,8 +45,8 @@ export default function HomeFire() {
                                         <header className="mb-2">
                                             <h3 className="mb-2">
                                                 <Link
-                                                    href={`/post-fire/content/[slug]`}
-                                                    as={`/post-fire/content/${slug}`}
+                                                    href={`/posts/content/[slug]`}
+                                                    as={`/posts/content/${slug}`}
                                                 >
                                                     <a className="text-2xl font-bold font-display"
                                                        style={{color: '#000'}}>
@@ -83,7 +82,7 @@ export default function HomeFire() {
     )
 }
 
-// export async function getServerSideProps() {
+// export async function getStaticProps() {
 //     const allPosts = await allPostFromFire()
 //     return {
 //         props: {allPosts},

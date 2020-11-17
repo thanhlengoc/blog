@@ -17,6 +17,7 @@ export default function Admin () {
 
     fireDb.auth()
         .onAuthStateChanged((user) => {
+            // setLoadUser(true)
             if (user) {
                 console.log("user: ", user.email)
                 setUserEmail(user.email)
@@ -69,7 +70,7 @@ export default function Admin () {
                                 {
                                     loading ?
                                         <span>
-                                            <Spinner animation="grow" variant="secondary" /> Loading...
+                                            <Spinner as="span" size="sm" animation="border" variant="secondary" /> Loading...
                                         </span> :
                                     blogs.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
                                     <article key={slug}>
