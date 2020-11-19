@@ -2,7 +2,7 @@
 position: sticky;
 z-index: 1;
 top: 7rem;
-background: #fff;
+/*background: #fff;*/
 overflow-x: hidden;
 /*margin-top: 1.7rem;*/
 }
@@ -34,7 +34,6 @@ display: block;
     position: sticky;
     z-index: 1;
     top: 7rem;
-    background: #fff;
     overflow-x: hidden;
     margin-top: 1.7rem;
 }

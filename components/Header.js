@@ -1,17 +1,7 @@
 import React from 'react'
-import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Form, FormControl} from 'react-bootstrap'
 import Image from "./Image";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { useRouter } from 'next/router'
-
-const headerStyle = {
-    width: '100%',
-    background: '#fff',
-    color: '#000',
-    display: 'flex',
-    alignItems: 'center',
-    borderBottom: '1px solid #eaeaea',
-}
+import DarkModeToggle from "./DarkModeToggle";
 
 const inner = {
     width: '100%',
@@ -23,30 +13,18 @@ const inner = {
     justifyContent: 'space-between',
 }
 
-const childStyle = {
-    display: 'inline-flex',
-    color: '#fff',
-}
-
 const item = {
-    color: '#6C757D',
     fontSize: '14px',
     margin:"0 20px",
     fontWeight: 'bold',
 }
 
 const Header = () => {
-    const router = useRouter()
-
-    const handleClick = (e) => {
-        e.preventDefault()
-        router.push("/create-post")
-    }
 
     return (
-        <Navbar expand="lg" sticky="top" style={headerStyle}>
+        <Navbar className="header" expand="lg" sticky="top">
             <div style={inner}>
-                <div style={childStyle}>
+                <div className="d-inline-flex">
                     <Image
                         className="flex-shrink-0 mb-0 mr-3 rounded-full w-10 h-10"
                         src={require("../content/assets/thanhle.jpeg")}
@@ -54,21 +32,18 @@ const Header = () => {
                         previewSrc={require("../content/assets/thanhle.jpeg?lqip")}
                         alt="Profile"
                     />
-                    <Navbar.Brand href="/get-started">LeeNTH</Navbar.Brand>
+                    <Navbar.Brand className="navbar-brand" href="/get-started">LeeNTH</Navbar.Brand>
                 </div>
-                <div style={childStyle}>
+                <div className="d-inline-flex">
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <a href="/" className="font-light" style={item}>
-                            Posts
-                        </a>
+                        <a href="/" className="font-light navbar-brand" style={item}>Posts</a>
                         <Form inline>
-                            <FormControl type="text" placeholder="Feedback" className="mr-sm-2"
+                            <FormControl type="text" placeholder="Feedback"
+                                         className="feedback"
                                          style={{maxWidth: '120px',height:'30px',fontSize: '14px'}}/>
                         </Form>
-                        <FontAwesomeIcon className='flex-shrink-0 ml-4 rounded-full'
-                                         style={{width: '1.5rem', height: '1.5rem', color: '#6C757D'}}
-                                         icon={["fab", "github"]}/>
+                        <DarkModeToggle />
                     </Navbar.Collapse>
                 </div>
             </div>

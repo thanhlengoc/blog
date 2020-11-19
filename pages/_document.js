@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
       <Html lang={siteMetadata.language}>
         <Head/>
         <body>
+            <script src="./noflash.js" />
           <Main />
           <NextScript />
         </body>

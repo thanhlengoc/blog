@@ -138,13 +138,13 @@ export default function CreatePost () {
                             loadSuggestions={loadSuggestions}
                             childProps={{
                                 writeButton: {
-                                    style: {padding: '5px'}
+                                    style: {padding: '5px', color: '#000'}
                                 },
                                 previewButton: {
-                                    style: {padding: '5px'}
+                                    style: {padding: '5px', color: '#000'}
                                 },
                                 textArea: {
-                                    style: {background: '#E1EFF1', minHeight: "500px"}
+                                    style: {background: '#E1EFF1', minHeight: "500px", color: '#000'}
                                 }
                             }}
                             paste={{saveImage: saveToCloud}}
@@ -154,7 +154,7 @@ export default function CreatePost () {
                         <Form id="form-prefix">
                             <Form.Group controlId="title">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control type="text"
+                                <Form.Control type="text" className="input-frontmatter"
                                               value={title}
                                               onChange={(e)=> setTitle(e.target.value)}
                                               placeholder="Title.." required />
@@ -165,7 +165,7 @@ export default function CreatePost () {
 
                             <Form.Group controlId="tag">
                                 <Form.Label>Tag</Form.Label>
-                                <Form.Control type="text"
+                                <Form.Control type="text" className="input-frontmatter"
                                               value={tag}
                                               onChange={(e)=> setTag(e.target.value)}
                                               placeholder="Ex: Front-end or Back-end .." required />
@@ -176,7 +176,7 @@ export default function CreatePost () {
 
                             <Form.Group controlId="description">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control as="textarea" rows={3}
+                                <Form.Control as="textarea" rows={3} className="input-frontmatter"
                                               value={description}
                                               onChange={(e) => setDescription(e.target.value)}
                                               placeholder="Nội dung chính của bài viết.." required />
@@ -184,12 +184,12 @@ export default function CreatePost () {
 
                             <Form.Group controlId="datePost">
                                 <Form.Label>Date post:</Form.Label>
-                                <Form.Control type="text" value={postDate} disabled />
+                                <Form.Control className="input-frontmatter" type="text" value={postDate} disabled />
                             </Form.Group>
 
                             <Form.Group>
                                 <Form.Label>Post image:</Form.Label>
-                                <Form.Control type="file"
+                                <Form.Control type="file" className="input-frontmatter"
                                               id="postImage"
                                               name="postImage"
                                               onChange={previewFile}

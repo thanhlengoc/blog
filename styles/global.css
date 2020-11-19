@@ -2,60 +2,196 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-a {
-  @apply text-neon-orange;
-  color: #007bff
+/*--------------light mode css------------*/
+body.light-mode {
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+body.light-mode .header {
+    width: 100%;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+}
+body.light-mode a {
+    @apply text-neon-orange;
+    color: #007bff
+}
+body.light-mode a:hover {
+    @apply underline;
+    color: #f92300
+}
+body.light-mode .title-post {
+    color: #333
+}
+body.light-mode .title-post:hover {
+    @apply underline;
+    color: #333
+}
+body.light-mode .navbar-brand {
+    color: #333;
+}
+body.light-mode .navbar-brand:hover {
+    @apply underline;
+    color: #333;
+}
+body.light-mode p {
+    color: #333;
+}
+body.light-mode ul li {
+    color: #333;
+}
+body.light-mode ol li {
+    color: #333;
+}
+body.light-mode h1 {
+    color: #333;
+}
+body.light-mode h2 {
+    color: #333;
+}
+body.light-mode h3 {
+    color: #333;
+}
+body.light-mode h4 {
+    color: #333;
+}
+body.light-mode h5 {
+    color: #333;
+}
+body.light-mode h6 {
+    color: #333;
+}
+body.light-mode .banner {
+    background-color: #fff;
+    color: #333
+}
+body.light-mode .banner a {
+    color: #333;
 }
 
-a:hover {
-  @apply underline;
-  color: #f92300
+/*-------------dark mode css-------------*/
+body.dark-mode {
+    background-color: #141517;
+    color: #ffffff;
+}
+body.dark-mode .header {
+    width: 100%;
+    background-color: #1E2025;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+body.dark-mode .title-post {
+    color: #ffffff
+}
+body.dark-mode .title-post:hover {
+    @apply underline;
+    color: #ffffff
+}
+body.dark-mode .navbar-brand {
+    color: #ffffff
+}
+body.dark-mode .navbar-brand:hover {
+    @apply underline;
+    color: #ffffff
+}
+body.dark-mode .feedback {
+    background-color: #25292F;
+    color: #999;
+    border: 1px;
+}
+body.dark-mode h2, p, li {
+    color: #ffffff
+}
+body.dark-mode h3 {
+    color: #ffffff
+}
+body.dark-mode h4 {
+    color: #ffffff
+}
+body.dark-mode h5 {
+    color: #ffffff
+}
+body.dark-mode h6 {
+    color: #ffffff
+}
+body.dark-mode .paging {
+    background-color: #10171d;
+}
+body.dark-mode .banner {
+    background-color: #1E2025;
+}
+body.dark-mode .banner a {
+    color: #ffffff;
+}
+body.dark-mode .input-frontmatter {
+    background-color: #25292F;
+    color: #ffffff;
+    border: 1px;
 }
 
-span, li,
-p {
-  @apply font-light;
-  /*font-size: 16px;*/
+span {
+    /*color: rgb(250, 240, 137);*/
+    border-radius: 5px;
+    /*background-color: rgba(250, 240, 137, 0.16);*/
+}
+
+span, li, p {
+    @apply font-light;
 }
 
 /* Styles for lazy loaded images */
 .blur-up {
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-  transition: filter 500ms ease-in, -webkit-filter 500ms ease-in;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    transition: filter 500ms ease-in, -webkit-filter 500ms ease-in;
 }
 
 .blur-up.lazyloaded {
-  -webkit-filter: blur(0);
-  filter: blur(0);
+    -webkit-filter: blur(0);
+    filter: blur(0);
 }
 
 .emoji-react {
-  width: 2rem !important;
-  height: 2rem !important;
-  opacity: 0.5;
-  margin: 0 15px;
+    width: 2rem !important;
+    height: 2rem !important;
+    opacity: 0.5;
+    margin: 0 15px;
 }
 
 .emoji-react:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .scrollTop {
-  position: fixed;
-  bottom: 60px;
-  right: 50px;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-  justify-content: end;
-  z-index: 1000;
-  cursor: pointer;
-  animation: fadeIn 0.3s;
-  transition: opacity 0.4s;
-  opacity: 0.5;
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    justify-content: end;
+    z-index: 1000;
+    cursor: pointer;
+    animation: fadeIn 0.3s;
+    transition: opacity 0.4s;
+    opacity: 0.5;
 }
 
 .scrollTop:hover{
-  opacity: 1;
+    opacity: 1;
+}
+
+.btn-dark-mode {
+    background-color: #E1EFF1;
+    padding: 7px;
+    opacity: 0.7;
+    border-radius: 7px;
+}
+.btn-dark-mode:hover {
+    opacity: 1;
 }

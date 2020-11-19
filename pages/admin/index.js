@@ -51,29 +51,26 @@ export default function Admin({allPosts}) {
                         <Row>
                             <Col xs='12' sm='12'>
                                 {
-                                    allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
+                                    allPosts.map(({frontmatter: {title, description, tag, date}, slug}) => (
                                         <article key={slug}>
                                             <div className="row">
-                                                <div className="col-sm-8">
+                                                <div className="col-sm-12">
                                                     <header>
                                                         <h4>
                                                             <Link href={`/update-post/[slug]`}
                                                                   as={`/update-post/${slug}`}>
-                                                                <a className="text-xl font-bold font-display"
-                                                                   style={{color: '#000'}}>
+                                                                <a className="text-xl font-bold font-display title-post">
                                                                     {title}
                                                                 </a>
                                                             </Link>
                                                         </h4>
                                                         <div className="d-flex flex-row">
                                                             <Badge className="mr-2" style={{height: 'fit-content'}}
-                                                                   variant="secondary">{tag}</Badge>
-                                                            <span className="text-sm mr-2"
-                                                                  style={{color: "#6C757D"}}>{date}</span>
+                                                                   variant="warning">{tag}</Badge>
+                                                            <span className="text-sm mr-2">{date}</span>
                                                             <p className="text-md mb-0 mr-2">{description}</p>
                                                         </div>
                                                     </header>
-
                                                 </div>
                                             </div>
                                             <hr className="mt-2 mb-2"/>

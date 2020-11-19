@@ -12,25 +12,24 @@ export default function Home({allPosts}) {
 
     return (
         <Layout>
-            <SEO title="All Posts"/>
+            <SEO title="Newest post"/>
             <Row style={{paddingTop: '1.7rem'}}>
                 <Col xs='12' sm='9'>
                     {
                         allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
                             <article key={slug}>
                                 <div className="row">
-                                    <div className="col-sm-4">
+                                    <div className="col-sm-3">
                                         <img src={postImage} alt={"post"}/>
                                     </div>
-                                    <div className="col-sm-8">
+                                    <div className="col-sm-9">
                                         <header className="mb-2">
                                             <h3 className="mb-2">
                                                 <Link
                                                     href={`/posts/content/[slug]`}
                                                     as={`/posts/content/${slug}`}
                                                 >
-                                                    <a className="text-2xl font-bold font-display"
-                                                       style={{color: '#000'}}>
+                                                    <a className="text-xl font-bold font-display title-post">
                                                         {title}
                                                     </a>
                                                 </Link>
@@ -39,7 +38,7 @@ export default function Home({allPosts}) {
                                             <span className="text-sm font-bold" style={{color: "#6C757D"}}>{date}</span>
                                         </header>
                                         <section>
-                                            <p className="mb-8 text-md">{description}</p>
+                                            <p className="text-md">{description}</p>
                                         </section>
                                     </div>
                                 </div>
@@ -47,7 +46,7 @@ export default function Home({allPosts}) {
                             </article>
                         ))
                     }
-                    <Paging/>
+                    {/*<Paging/>*/}
                     <hr className="mt-3 mb-3"/>
                     <footer>
                         <Bio className="mt-8 mb-16"/>

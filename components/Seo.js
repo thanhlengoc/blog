@@ -10,7 +10,7 @@ export default function SEO({ title, description = "" }) {
   return (
     <Head>
       <title>
-        {title} | {siteMetadata.title}
+        {siteMetadata.title} | {title}
       </title>
       <meta name="description" content={metaDescription} />
       <meta property="og:type" content="website" />
@@ -20,10 +20,10 @@ export default function SEO({ title, description = "" }) {
         property="og:description"
         content={metaDescription}
       />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:creator" content={siteMetadata.social.twitter} />
+      <meta name="github:card" content="summary" />
+      <meta name="github:title" content={title} />
+      <meta name="github:description" content={metaDescription} />
+      <meta name="github:creator" content={siteMetadata.social.github} />
       <link rel="icon" type="image/png" href="./thanhle.jpeg" />
       <link rel="apple-touch-icon" href="./thanhle.jpeg" />
     </Head>

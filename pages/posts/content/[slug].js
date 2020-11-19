@@ -32,6 +32,7 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
                             <div style={{display: 'flex'}}>
                                 <Badge className="mr-2" variant="warning"
                                        style={{height: 'fit-content'}}>{frontmatter.tag}</Badge>
+                                <p className="text-sm mr-2">Author: Admin</p>
                                 <p className="text-sm">{frontmatter.date}</p>
                             </div>
                         </header>

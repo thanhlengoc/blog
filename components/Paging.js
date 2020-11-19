@@ -4,7 +4,7 @@ import {Pagination} from "react-bootstrap";
 const Paging = () => {
     return (
         <div className="d-flex justify-content-center">
-            <Pagination size="sm">
+            <Pagination size="sm" className="paging">
                 <Pagination.First />
                 <Pagination.Prev />
                 <Pagination.Item active>{1}</Pagination.Item>

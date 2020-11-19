@@ -4,10 +4,10 @@
   "description": "A Next.js template for a blog website.",
   "private": true,
   "scripts": {
-    "dev": "node ssr-server.js",
+    "dev": "node server.js",
     "build": "next build",
     "export": "next build && next export",
-    "start": "cross-env NODE_ENV=production node ssr-server.js"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -15,8 +15,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@loadable/component": "^5.14.1",
-    "@nandorojo/swr-firestore": "^0.16.0",
     "bootstrap": "^4.5.3",
+    "cacheable-response": "^2.1.8",
     "clsx": "^1.1.1",
     "express": "^4.17.1",
     "firebase": "^8.0.2",
@@ -44,11 +44,13 @@
     "swiper": "^5.4.1",
     "typeface-merriweather": "^1.1.13",
     "typeface-open-sans": "^1.1.13",
+    "use-dark-mode": "^2.3.1",
     "uuid": "^8.3.1",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.2.0",
+    "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
     "postcss-flexbugs-fixes": "^5.0.0",
     "postcss-preset-env": "^6.7.0",
