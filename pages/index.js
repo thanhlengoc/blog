@@ -4,7 +4,7 @@ import SEO from "components/Seo";
 import Bio from '../components/Bio'
 import Link from "next/link";
 import {Badge, Col, Row} from "react-bootstrap";
-import Paging from "../components/Paging";
+// import Paging from "../components/Paging";
 import Sidebar from "../components/Sidebar";
 import {allPostFromFire} from "../utils/apiUtils";
 
@@ -47,7 +47,7 @@ export default function Home({allPosts}) {
                         ))
                     }
                     {/*<Paging/>*/}
-                    <hr className="mt-3 mb-3"/>
+                    {/*<hr className="mt-3 mb-3"/>*/}
                     <footer>
                         <Bio className="mt-8 mb-16"/>
                     </footer>

@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import {getSiteMetaData} from "utils/helpers";
+import {GA_TRACKING_ID} from "../lib/gtag";
 
 export default function SEO({title, description = ""}) {
     const siteMetadata = getSiteMetaData();
@@ -26,11 +27,25 @@ export default function SEO({title, description = ""}) {
             <meta name="github:creator" content={siteMetadata.social.github}/>
             <link rel="icon" type="image/png" href="./thanhle.jpeg"/>
             <link rel="apple-touch-icon" href="./thanhle.jpeg"/>
-            <link
-                rel="alternate"
-                type="application/rss+xml"
-                title="RSS for LeeNTH blog"
-                href="https://lengocthanh.vercel.app/rss"/>
+            <link rel="alternate" type="application/rss+xml"
+                  title="RSS for LeeNTH blog"
+                  href="https://lengocthanh.vercel.app/rss"/>
+            <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_TRACKING_ID}', {
+                      page_path: window.location.pathname,
+                    });
+                  `,
+                }}
+            />
         </Head>
     );
 }

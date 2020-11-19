@@ -72,6 +72,13 @@ body.light-mode .banner {
 body.light-mode .banner a {
     color: #333;
 }
+body.light-mode .my-footer {
+    width: 100%;
+    background-color: #F2F2F2;
+    height: 150px;
+    padding: 60px 0;
+    border-top: 1px solid #eaeaea;
+}
 
 /*-------------dark mode css-------------*/
 body.dark-mode {
@@ -132,6 +139,12 @@ body.dark-mode .input-frontmatter {
     background-color: #25292F;
     color: #ffffff;
     border: 1px;
+}
+body.dark-mode .my-footer {
+    width: 100%;
+    background-color: #1E2025;
+    height: 150px;
+    padding: 60px 0;
 }
 
 span {

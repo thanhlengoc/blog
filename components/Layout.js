@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import React from "react";
 import {ToastContainer} from 'react-toastify';
 import dynamic from "next/dynamic";
+import Footer from "./Footer";
 // antialiased font-body
 
 const ScrollToTop = dynamic(
@@ -22,6 +23,7 @@ export default function Layout({children}) {
                 <main>{children}</main>
             </div>
             <ScrollToTop/>
+            {/*<Footer/>*/}
             <ToastContainer autoClose={2500}/>
         </div>
 
