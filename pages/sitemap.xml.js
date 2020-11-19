@@ -23,6 +23,10 @@ const createSitemap = async (posts) => {
             <loc>https://lengocthanh.vercel.app/</loc>
             <priority>1.00</priority>
         </url>
+        <url>
+            <loc>https://lengocthanh.vercel.app/create-post</loc>
+            <priority>1.00</priority>
+        </url>
         ${projectsXML}
     </urlset>
     `

@@ -63,6 +63,7 @@ export async function getPostBySlug (slug) {
 
     const postIndex = posts.findIndex(({slug: postSlug}) => postSlug === slug);
 
+    // console.log("posts[postIndex]: ", posts[postIndex])
     const {frontmatter, content, excerpt} = posts[postIndex];
 
     const previousPost = posts[postIndex + 1];

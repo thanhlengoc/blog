@@ -11,19 +11,18 @@ const Sidebar = () => {
     return (
         <div className="sidenav">
             <h6>Tìm kiếm</h6>
-            <InputGroup>
-                <InputGroup.Prepend style={{borderRight: 'none'}}>
-                    <InputGroup.Text className="feedback" style={{paddingRight: '0'}}>
-                        <FontAwesomeIcon icon={faSearch}/>
-                    </InputGroup.Text>
-                </InputGroup.Prepend>
-                <Form.Control
-                    className="mr-sm-2 feedback"
-                    style={{borderLeft: 'none', fontSize: '14px'}}
-                    type="text"
-                    placeholder="search.."
-                />
-            </InputGroup>
+            {/*<InputGroup>*/}
+            {/*    <InputGroup.Prepend style={{borderRight: 'none'}}>*/}
+            {/*        <InputGroup.Text className="feedback" style={{paddingRight: '0'}}>*/}
+            {/*            <FontAwesomeIcon icon={faSearch}/>*/}
+            {/*        </InputGroup.Text>*/}
+            {/*    </InputGroup.Prepend>*/}
+            {/*</InputGroup>*/}
+            <Form.Control
+                className="mr-sm-2 feedback"
+                type="text"
+                placeholder="Search.."
+            />
             <hr className="mt-3 mb-3"/>
             <h6>Tags</h6>
             <a href="/" className={currentPath === "/web-dev" ? "font-bold" : ""}>

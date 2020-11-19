@@ -14,7 +14,9 @@ body.light-mode .header {
     color: #333;
     display: flex;
     align-items: center;
+    border-top: 3px solid #f48024;
     border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.12), inset 0 -1px 0 0 #dadce0;
 }
 body.light-mode a {
     @apply text-neon-orange;
@@ -74,7 +76,7 @@ body.light-mode .banner a {
 }
 body.light-mode .my-footer {
     width: 100%;
-    background-color: #F2F2F2;
+    background-color: #fff;
     height: 150px;
     padding: 60px 0;
     border-top: 1px solid #eaeaea;
@@ -91,6 +93,8 @@ body.dark-mode .header {
     color: #ffffff;
     display: flex;
     align-items: center;
+    border-top: 3px solid #f48024;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 }
 body.dark-mode .title-post {
     color: #ffffff
@@ -110,6 +114,9 @@ body.dark-mode .feedback {
     background-color: #25292F;
     color: #999;
     border: 1px;
+    max-width: 120px;
+    height: 30px;
+    font-size: 14px;
 }
 body.dark-mode h2, p, li {
     color: #ffffff

@@ -5,18 +5,12 @@ import DarkModeToggle from "./DarkModeToggle";
 
 const inner = {
     width: '100%',
-    maxWidth: '1024px',
+    maxWidth: '980px',
     margin: '0 auto',
-    padding: '0.2rem 1.7rem',
+    padding: '0.8rem 0',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-}
-
-const item = {
-    fontSize: '14px',
-    margin:"0 20px",
-    fontWeight: 'bold',
 }
 
 const Header = () => {
@@ -32,12 +26,15 @@ const Header = () => {
                         previewSrc={require("../content/assets/thanhle.jpeg?lqip")}
                         alt="Profile"
                     />
-                    <Navbar.Brand className="navbar-brand" href="/get-started">LeeNTH</Navbar.Brand>
+                    <Navbar.Brand className="navbar-brand font-bold" href="/get-started">LENGTH</Navbar.Brand>
                 </div>
                 <div className="d-inline-flex">
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <a href="/" className="font-light navbar-brand" style={item}>Posts</a>
+                        <a href="/" className="navbar-brand">Posts</a>
+                        <a href="/admin" className="navbar-brand">
+                            Admin
+                        </a>
                         <Form inline>
                             <FormControl type="text" placeholder="Feedback"
                                          className="feedback"

@@ -107,7 +107,6 @@ export default function CreatePost () {
                 })
 
         setTimeout(() => {
-            toast.warning("Quá thời gian đăng bài.")
             setLoading(false);
         }, 10000)
     }
