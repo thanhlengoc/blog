@@ -2,6 +2,7 @@ import React from 'react'
 import {Navbar, Form, FormControl, Button} from 'react-bootstrap'
 import Image from "./Image";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { useRouter } from 'next/router'
 
 const headerStyle = {
     width: '100%',
@@ -27,7 +28,20 @@ const childStyle = {
     color: '#fff',
 }
 
+const item = {
+    color: '#6C757D',
+    fontSize: '14px',
+    margin:"0 20px",
+    fontWeight: 'bold',
+}
+
 const Header = () => {
+    const router = useRouter()
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        router.push("/create-post")
+    }
 
     return (
         <Navbar expand="lg" sticky="top" style={headerStyle}>
@@ -40,17 +54,17 @@ const Header = () => {
                         previewSrc={require("../content/assets/thanhle.jpeg?lqip")}
                         alt="Profile"
                     />
-                    <Navbar.Brand href="/">Le Ngoc Thanh</Navbar.Brand>
+                    <Navbar.Brand href="/get-started">LeeNTH</Navbar.Brand>
                 </div>
                 <div style={childStyle}>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
-                        {/*<a href="/" className="font-light" style={{color:'#000',fontSize: '14px', margin:"0 10px"}}>Distribute</a>*/}
+                        <a href="/" className="font-light" style={item}>
+                            Posts
+                        </a>
                         <Form inline>
                             <FormControl type="text" placeholder="Feedback" className="mr-sm-2"
                                          style={{maxWidth: '120px',height:'30px',fontSize: '14px'}}/>
-                            <Button color="info"
-                                    style={{marginLeft: '20px',height:'30px',fontSize: '14px', lineHeight: '0'}}>Learn</Button>
                         </Form>
                         <FontAwesomeIcon className='flex-shrink-0 ml-4 rounded-full'
                                          style={{width: '1.5rem', height: '1.5rem', color: '#6C757D'}}

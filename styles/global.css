@@ -4,11 +4,12 @@
 
 a {
   @apply text-neon-orange;
+  color: #007bff
 }
 
 a:hover {
   @apply underline;
-  color: #007bff
+  color: #f92300
 }
 
 span, li,
@@ -30,8 +31,31 @@ p {
 }
 
 .emoji-react {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: #6C757D;
+  width: 2rem !important;
+  height: 2rem !important;
+  opacity: 0.5;
   margin: 0 15px;
+}
+
+.emoji-react:hover {
+  opacity: 1;
+}
+
+.scrollTop {
+  position: fixed;
+  bottom: 65px;
+  right: 50px;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  justify-content: end;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: opacity 0.4s;
+  opacity: 0.5;
+}
+
+.scrollTop:hover{
+  opacity: 1;
 }

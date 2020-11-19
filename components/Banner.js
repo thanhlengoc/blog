@@ -31,11 +31,11 @@ const Banner = () => {
     return (
         <div className="font-light" style={bannerStyle}>
             <div style={inner}>
-                <a href="/" style={aStyle}>
-                    Blog
+                <a href="/posts" style={aStyle}>
+                    Home
                 </a>
-                <a href="https://github.com/thanhlengoc/blog" style={aStyle}>
-                    Go to github page →
+                <a href="/admin" style={aStyle}>
+                    Admin page →
                 </a>
             </div>
         </div>
