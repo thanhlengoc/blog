@@ -35,12 +35,12 @@ export default function Login () {
             <SEO title="Login"/>
             <div className="d-flex justify-content-center mt-10">
                 <Card style={{ width: '36rem' }}>
-                    <Card.Body>
+                    <Card.Body className="card-area">
                         {notify}
                         <Form onSubmit={handleLogin}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email"
+                                <Form.Control type="email" className="input-search" placeholder="Enter email"
                                               value={username}
                                               onChange= {({target}) => setUsername(target.value)}
                                 />
@@ -52,7 +52,7 @@ export default function Login () {
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password: </Form.Label>
                                 <Form.Control type="password" placeholder="Password"
-                                              value={password}
+                                              value={password} className="input-search"
                                               onChange={({target}) => setPassword(target.value)}
                                 />
                             </Form.Group>

@@ -1,7 +1,7 @@
 .sidenav {
 position: sticky;
 z-index: 1;
-top: 7rem;
+top: 6rem;
 /*background: #fff;*/
 overflow-x: hidden;
 /*margin-top: 1.7rem;*/
@@ -33,9 +33,9 @@ display: block;
 .toc {
     position: sticky;
     z-index: 1;
-    top: 7rem;
+    top: 6rem;
     overflow-x: hidden;
-    margin-top: 1.7rem;
+    /*margin-top: 1.7rem;*/
 }
 
 .toc .h5 {

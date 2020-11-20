@@ -19,7 +19,7 @@ export default function Layout({children}) {
         <div className="app">
             {/*<Banner/>*/}
             <Header/>
-            <div className="max-w-screen-lg px-4 py-12 mx-auto font-light" style={{paddingTop: '0'}}>
+            <div className="container px-4 py-12 mx-auto font-light" style={{paddingTop: '0'}}>
                 <main>{children}</main>
             </div>
             <ScrollToTop/>

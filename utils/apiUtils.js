@@ -104,3 +104,4 @@ export function onLogin(username, password) {
 export function onLogout() {
     return fireDb.auth().signOut();
 }
+

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import Layout from "../../components/Layout";
 import SEO from "../../components/Seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -12,8 +12,6 @@ import {allPostFromFire, onLogout} from "../../utils/apiUtils";
 export default function Admin({allPosts}) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('');
-    // const [blogs, setBlogs] = useState([]);
-    // const [loading, setLoading] = useState(false);
 
     fireDb.auth()
         .onAuthStateChanged((user) => {

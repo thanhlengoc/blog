@@ -41,13 +41,13 @@ export default function Register () {
             <SEO title="Register"/>
             <div className="d-flex justify-content-center mt-10">
                 <Card style={{ width: '36rem' }}>
-                    <Card.Body>
+                    <Card.Body className="card-area">
                         {notification}
                         <Form onSubmit={handleLogin}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email: </Form.Label>
                                 <Form.Control type="email" placeholder="Enter email"
-                                              value={userName}
+                                              value={userName} className="input-search"
                                               onChange={({target}) => setUsername(target.value)}
                                 />
                                 <Form.Text className="text-muted">
@@ -58,14 +58,14 @@ export default function Register () {
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password: </Form.Label>
                                 <Form.Control type="password" placeholder="Password"
-                                              value={password}
+                                              value={password} className="input-search"
                                               onChange={({target}) => setPassword(target.value)}
                                 />
                             </Form.Group>
                             <Form.Group controlId="formBasicPasswordConf">
                                 <Form.Label>Confirm Password: </Form.Label>
                                 <Form.Control type="password" placeholder="Password"
-                                              value={passConf}
+                                              value={passConf} className="input-search"
                                               onChange={({target}) => setPassConf(target.value)}
                                 />
                             </Form.Group>
