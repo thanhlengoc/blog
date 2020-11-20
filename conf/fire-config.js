@@ -2,13 +2,13 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCYzc8fndOsY2IfjKP9x1q8iuysB-RY6lk",
-    authDomain: "blogthanhle.firebaseapp.com",
-    databaseURL: "https://blogthanhle.firebaseio.com",
-    projectId: "blogthanhle",
-    storageBucket: "blogthanhle.appspot.com",
-    messagingSenderId: "966791598779",
-    appId: "1:966791598779:web:186d18f495e65a4b584f9e"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGE_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
 };
 try {
     firebase.initializeApp(firebaseConfig);
