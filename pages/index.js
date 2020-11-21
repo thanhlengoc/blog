@@ -50,7 +50,6 @@ export default function Home({allPosts}) {
                                                 </section>
                                             </div>
                                         </div>
-                                        {/*<hr className="mt-3 mb-3"/>*/}
                                     </article>
                                 </Card.Body>
                             </Card>

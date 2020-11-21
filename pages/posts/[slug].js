@@ -40,7 +40,7 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
             />
             <Row style={{paddingTop: '1.7rem'}}>
                 {
-                    showReaction ?
+                    // showReaction ?
                         <Col xs="12" sm='1' className="text-center">
                             <div className="reaction">
                                 <AiOutlineLike className="emoji-react mb-3"/>
@@ -52,7 +52,7 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
                                 <HiOutlineDotsHorizontal className="emoji-react mb-3"/>
                             </div>
                         </Col>
-                        : null
+                        // : null
                 }
                 <Col xs="12" sm="8">
                     <Card className="card-post">
