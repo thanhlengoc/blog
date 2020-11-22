@@ -4,7 +4,7 @@ import SEO from "../../components/Seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import {Badge, Col, Row} from "react-bootstrap";
+import {Badge, Col, Row, Button} from "react-bootstrap";
 import fireDb from "../../conf/fire-config";
 import {toast} from "react-toastify";
 import {allPostFromFire, onLogout} from "../../utils/api";
@@ -38,12 +38,15 @@ export default function Admin({allPosts}) {
                     <div className="pt-4">
                         <div className="d-flex">
                             <p className="font-bold mr-auto">Posts by: {userEmail}</p>
-                            <a href="/admin/new-post" className="mr-2">
-                                <FontAwesomeIcon icon={faPlus}/> New Post
-                            </a> |
-                            <a className="ml-2" onClick={handleLogout}>
+                            <Link href="/admin/new-post">
+                                <a className="mr-2">
+                                    <FontAwesomeIcon icon={faPlus}/> New Post
+                                </a>
+                            </Link>
+                             |
+                            <Button size="sm" className="ml-2" onClick={handleLogout}>
                                 <FontAwesomeIcon icon={faSignOutAlt}/> Logout
-                            </a>
+                            </Button>
                         </div>
                         <hr className="mt-3 mb-3"/>
                         <Row>

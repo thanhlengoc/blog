@@ -4,6 +4,8 @@ import "typeface-merriweather";
 
 // import css
 import "styles/global.css";
+import "styles/darkmode.scss"
+import "styles/lightmode.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "styles/sidebar.css";
 import "react-mde/lib/styles/css/react-mde-all.css";

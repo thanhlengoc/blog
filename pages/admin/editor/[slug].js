@@ -15,6 +15,8 @@ import { deletePostByDoc,
 } from "../../../utils/api";
 import {toast} from "react-toastify";
 import moment from 'moment';
+import {HeadingRenderer} from "../../../utils/helpers";
+
 
 export default function UpdatePost ({post, frontmatter}) {
     const router = useRouter();
@@ -166,7 +168,7 @@ export default function UpdatePost ({post, frontmatter}) {
                                     <ReactMarkdown className="mb-4 prose-sm prose sm:prose lg:prose-lg"
                                                    escapeHtml={false}
                                                    source={markdown}
-                                                   renderers={{ code: CodeBlock }}
+                                                   renderers={{ code: CodeBlock, heading: HeadingRenderer }}
                                     />)
                             }
                             loadSuggestions={loadSuggestions}

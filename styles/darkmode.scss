@@ -1,0 +1,124 @@
+/*-------------dark mode css-------------*/
+body.dark-mode {
+  background-color: #141517;
+  color: #ffffff;
+  a {
+    color: #007bff;
+    &:hover {
+      color: #f48024;
+    }
+  }
+  .header {
+    width: 100%;
+    background-color: #1E2025;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  }
+  .header-link {
+    color: #ffffff;
+    text-decoration: none !important;
+    margin: 5px 20px 5px 0;
+    &:hover {
+      color: #f48024;
+    }
+  }
+  .title-post {
+    color: #ffffff;
+    text-decoration: none !important;
+    &:hover {
+      color: #f48024;
+    }
+  }
+  .navbar-brand {
+    padding: 5px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 3px;
+    text-decoration: none !important;
+    &:hover {
+      color: #f48024;
+    }
+  }
+  .feedback {
+    background-color: #25292F;
+    color: #fff;
+    border: 1px solid #2c303a;
+    max-width: 260px;
+    min-width: 250px;
+  }
+  .input-search {
+    background-color: #25292F;
+    color: #fff;
+    border: 1px solid #999;
+  }
+  .btn-menu {
+    color: #ffffff;
+  }
+  h2 {
+    color: #ffffff;
+  }
+  h3 {
+    color: #ffffff;
+  }
+  h4 {
+    color: #ffffff;
+  }
+  h5 {
+    color: #ffffff;
+  }
+  h6 {
+    color: #ffffff;
+  }
+  p {
+    color: #ffffff;
+  }
+  li {
+    color: #ffffff;
+  }
+  .paging {
+    background-color: #10171d;
+  }
+  .banner {
+    background-color: #1E2025;
+    a {
+      color: #ffffff;
+    }
+  }
+  .input-frontmatter {
+    background-color: #25292F;
+    color: #ffffff;
+    border: 1px;
+  }
+  .my-footer {
+    width: 100%;
+    background-color: #1E2025;
+    min-height: 40vh;
+    border-top: 1px solid #2c303a;
+  }
+  hr {
+    background-color: #2c303a;
+  }
+  .card-area {
+    background-color: #25292F;
+    color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  }
+  .card-post {
+    background-color: #25292F;
+    border: 1px solid #2c303a;
+  }
+  .btn-dark-mode {
+    background-color: #25292F;
+    color: #fff;
+    padding: 9px;
+    border-radius: 7px;
+    margin: 5px 0;
+    border: 1px solid #2c303a;
+    outline: none;
+    &:hover {
+      color: #f48024;
+    }
+  }
+}

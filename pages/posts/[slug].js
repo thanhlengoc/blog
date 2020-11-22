@@ -14,6 +14,7 @@ import {getPostBySlug} from "../../utils/api";
 import {AiOutlineLike, AiOutlineDislike, AiOutlineShareAlt} from "react-icons/ai";
 import {HiOutlineDotsHorizontal} from "react-icons/hi"
 import Image from "../../components/Image/Image";
+import {HeadingRenderer} from "../../utils/helpers";
 
 export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
 
@@ -77,12 +78,8 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                                     className="mb-4 prose-sm prose sm:prose lg:prose-lg"
                                     escapeHtml={false}
                                     source={post.content}
-                                    renderers={{code: CodeBlock, image: MarkdownImage}}
+                                    renderers={{code: CodeBlock, image: MarkdownImage, heading: HeadingRenderer}}
                                 />
-                                {/*<hr className="mt-4"/>*/}
-                                {/*<footer>*/}
-                                {/*    <Bio className="mt-8 mb-10"/>*/}
-                                {/*</footer>*/}
                             </article>
                         </Card.Body>
                     </Card>
