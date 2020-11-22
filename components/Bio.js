@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import Image from "./Image";
+import Image from "./Image/Image";
 import { getSiteMetaData } from "utils/helpers";
 
 export default function Bio({ className }) {

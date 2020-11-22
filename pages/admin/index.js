@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Layout from "../../components/Layout";
+import React, {useState} from 'react'
+import TheLayout from "../../components/TheLayout";
 import SEO from "../../components/Seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import {Badge, Col, Row} from "react-bootstrap";
 import fireDb from "../../conf/fire-config";
 import {toast} from "react-toastify";
-import {allPostFromFire, onLogout} from "../../utils/apiUtils";
+import {allPostFromFire, onLogout} from "../../utils/api";
 
 export default function Admin({allPosts}) {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -26,19 +26,19 @@ export default function Admin({allPosts}) {
 
     const handleLogout = () => {
         onLogout().then(() => {
-                toast.success("Đăng xuất thành công.")
-            });
+            toast.success("Đăng xuất thành công.")
+        });
     }
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO title="Admin Page"/>
             {
                 loggedIn ?
                     <div className="pt-4">
                         <div className="d-flex">
                             <p className="font-bold mr-auto">Posts by: {userEmail}</p>
-                            <a href="/create-post" className="mr-2">
+                            <a href="/admin/new-post" className="mr-2">
                                 <FontAwesomeIcon icon={faPlus}/> New Post
                             </a> |
                             <a className="ml-2" onClick={handleLogout}>
@@ -55,8 +55,8 @@ export default function Admin({allPosts}) {
                                                 <div className="col-sm-12">
                                                     <header>
                                                         <h4>
-                                                            <Link href={`/update-post/[slug]`}
-                                                                  as={`/update-post/${slug}`}>
+                                                            <Link href={`/admin/editor/[slug]`}
+                                                                  as={`/admin/editor/${slug}`}>
                                                                 <a className="text-xl font-bold font-display title-post">
                                                                     {title}
                                                                 </a>
@@ -79,21 +79,21 @@ export default function Admin({allPosts}) {
                     </div>
                     :
                     <div className="d-flex justify-content-end pt-4">
-                        <Link href="/auth/login">
+                        <Link href="/admin/login">
                             <a className="mr-2" style={{fontSize: '18px'}}> Login</a>
                         </Link> |
-                        <Link href="/auth/register">
+                        <Link href="/admin/register">
                             <a className="ml-2" style={{fontSize: '18px'}}> Register</a>
                         </Link>
                     </div>
             }
-        </Layout>
+        </TheLayout>
     )
 }
 
 export async function getServerSideProps() {
     const allPosts = await allPostFromFire()
     return {
-        props: { allPosts },
+        props: {allPosts},
     }
 }

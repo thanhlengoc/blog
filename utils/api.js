@@ -38,10 +38,10 @@ export async function updatePost(docId, frontmatter, content) {
         })
 }
 
-export async function getPostByDoc(docId) {
-    return await fireDb.firestore()
-        .collection(collectionId).doc(docId).get()
-}
+// export async function getPostByDoc(docId) {
+//     return await fireDb.firestore()
+//         .collection(collectionId).doc(docId).get()
+// }
 
 export async function allPostFromFire () {
     const snapshot = await fireDb.firestore().collection(collectionId).get()
@@ -54,16 +54,15 @@ export async function allPostFromFire () {
     )
 }
 
-export async function getAllDocFromFire () {
-    return await fireDb.firestore().collection(collectionId).get()
-}
+// export async function getAllDocFromFire () {
+//     return await fireDb.firestore().collection(collectionId).get()
+// }
 
 export async function getPostBySlug (slug) {
     const posts = await allPostFromFire();
 
     const postIndex = posts.findIndex(({slug: postSlug}) => postSlug === slug);
-
-    // console.log("posts[postIndex]: ", posts[postIndex])
+    console.log("getPostBySlug is called ")
     const {frontmatter, content, excerpt} = posts[postIndex];
 
     const previousPost = posts[postIndex + 1];
@@ -76,7 +75,6 @@ export async function getDocBySlug (slug) {
     const posts = await allPostFromFire();
 
     const postIndex = posts.findIndex(({slug: postSlug}) => postSlug === slug);
-
     const {frontmatter, content, excerpt} = posts[postIndex];
 
     return {frontmatter, post: {content, excerpt, slug}};
@@ -87,19 +85,19 @@ export async function deletePostByDoc(docId) {
         .collection(collectionId).doc(docId).delete()
 }
 
-export function onAuthStateChange(callback) {
-    return fireDb.auth().onAuthStateChanged(user => {
-        if (user) {
-            callback({loggedIn: true});
-        } else {
-            callback({loggedIn: false});
-        }
-    });
-}
-
-export function onLogin(username, password) {
-    return fireDb.auth().signInWithEmailAndPassword(username, password);
-}
+// export function onAuthStateChange(callback) {
+//     return fireDb.auth().onAuthStateChanged(user => {
+//         if (user) {
+//             callback({loggedIn: true});
+//         } else {
+//             callback({loggedIn: false});
+//         }
+//     });
+// }
+//
+// export function onLogin(username, password) {
+//     return fireDb.auth().signInWithEmailAndPassword(username, password);
+// }
 
 export function onLogout() {
     return fireDb.auth().signOut();

@@ -1,5 +1,5 @@
 import React from 'react'
-import {allPostFromFire} from "../utils/apiUtils";
+import {allPostFromFire} from "../utils/api";
 import { getSiteMetaData } from "utils/helpers";
 
 const EXTERNAL_DATA_URL = 'https://lengocthanh.vercel.app/posts/content';

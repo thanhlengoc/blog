@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
-import Layout from "components/Layout";
+import TheLayout from "components/TheLayout";
 import SEO from "components/Seo";
 import Bio from "components/Bio";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngry, faGrinAlt, faSmileWink, faDizzy} from '@fortawesome/free-solid-svg-icons'
 import {Badge, Card, Col, Row} from "react-bootstrap";
-import CodeBlock from "../../components/CodeBlock";
-import MarkdownImage from "../../components/MarkdownImage";
+import CodeBlock from "../../components/Post/CodeBlock";
+import MarkdownImage from "../../components/Image/MarkdownImage";
 import Toc from 'react-toc'
-import {getPostBySlug} from "../../utils/apiUtils";
+import {getPostBySlug} from "../../utils/api";
 import {AiOutlineLike, AiOutlineDislike, AiOutlineShareAlt} from "react-icons/ai";
 import {HiOutlineDotsHorizontal} from "react-icons/hi"
+import Image from "../../components/Image/Image";
 
-export default function PostFire({post, frontmatter, nextPost, previousPost}) {
+export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
 
     // const [showReaction, setShowReaction] = useState(true)
 
@@ -33,15 +34,15 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
 
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO
                 title={frontmatter.title}
                 description={frontmatter.description || post.excerpt}
             />
-            <Row style={{paddingTop: '1.7rem'}}>
+            <Row className="row-post">
                 {
                     // showReaction ?
-                        <Col xs="12" sm='1' className="text-center">
+                        <Col xs="12" sm='1' className="text-center p-2">
                             <div className="reaction">
                                 <AiOutlineLike className="emoji-react mb-3"/>
                                 <p>0</p>
@@ -54,8 +55,11 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
                         </Col>
                         // : null
                 }
-                <Col xs="12" sm="8">
+                <Col xs="12" sm="8" className="p-2">
                     <Card className="card-post">
+                        <Card.Header className="p-0">
+                            <Image src={frontmatter.postImage} alt="img-post"/>
+                        </Card.Header>
                         <Card.Body>
                             <article>
                                 <header className="mb-8">
@@ -118,7 +122,7 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
                         </div>
                     </footer>
                 </Col>
-                <Col xs={"12"} sm={"3"}>
+                <Col xs="12" sm="3" className="p-2">
                     <Card className="toc card-post">
                         <Card.Body>
                             <h5>Table of contents</h5>
@@ -128,17 +132,17 @@ export default function PostFire({post, frontmatter, nextPost, previousPost}) {
                 </Col>
             </Row>
 
-        </Layout>
+        </TheLayout>
     );
 }
 
-export const getServerSideProps = async ({ query }) => {
+export async function getServerSideProps ({ query }) {
+    console.log("ssr posts/slug Component query: ", JSON.stringify(query))
     const postData = await getPostBySlug(query.slug);
 
     if (!postData.previousPost) {
         postData.previousPost = null;
     }
-
     if (!postData.nextPost) {
         postData.nextPost = null;
     }

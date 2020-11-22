@@ -33,7 +33,7 @@ display: block;
 .toc {
     position: sticky;
     z-index: 1;
-    top: 6rem;
+    top: 5.5rem;
     overflow-x: hidden;
     /*margin-top: 1.7rem;*/
 }

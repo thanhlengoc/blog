@@ -1,29 +1,22 @@
-import Header from './Header';
-import Banner from "./Banner";
+import Header from './Header/Header';
 import React from "react";
 import {ToastContainer} from 'react-toastify';
 import dynamic from "next/dynamic";
-// import Footer from "./Footer";
-// antialiased font-body
 
 const ScrollToTop = dynamic(
-    () => {
-        return import("./ScrollTopArrow");
-    },
+    () => {return import("./ScrollTopArrow")},
     {ssr: false}
 );
 
-export default function Layout({children}) {
+export default function TheLayout({children}) {
 
     return (
         <div className="app">
-            {/*<Banner/>*/}
             <Header/>
-            <div className="container px-4 py-12 mx-auto font-light" style={{paddingTop: '0'}}>
+            <div className="container pt-0 px-4 py-12 mx-auto font-light">
                 <main>{children}</main>
             </div>
             <ScrollToTop/>
-            {/*<Footer/>*/}
             <ToastContainer autoClose={2500}/>
         </div>
 

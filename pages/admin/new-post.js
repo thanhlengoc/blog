@@ -1,36 +1,27 @@
 import React, {useState} from 'react'
+import TheLayout from '../../components/TheLayout'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
 import SEO from "../../components/Seo";
 import ReactMde from "react-mde";
 import ReactMarkdown from "react-markdown/with-html";
-import CodeBlock from "../../components/CodeBlock";
-import {bufferToBase64, loadSuggestions} from "../../utils/createPostUtils";
+import CodeBlock from "../../components/Post/CodeBlock";
+import {bufferToBase64, loadSuggestions} from "../../utils/helpers";
 import { FaMarkdown } from 'react-icons/fa';
-import {Form, Button, Spinner, Modal} from "react-bootstrap";
-import { deletePostByDoc,
-    getDocBySlug,
-    updatePost,
-    uploadImageToCloud,
-} from "../../utils/apiUtils";
+import {Form, Button, Spinner} from "react-bootstrap";
+import {uploadImageToCloud, uploadPost} from "../../utils/api";
 import {toast} from "react-toastify";
+import {uniqDocId} from "../../conf/constants";
 import moment from 'moment';
 
-export default function UpdatePost ({post, frontmatter}) {
+export default function NewPost () {
     const router = useRouter();
     const [selectedTab, setSelectedTab] = useState("write");
-    const [title, setTitle] = useState(frontmatter.title);
-    const [tag, setTag] = useState(frontmatter.tag);
-    const [description, setDescription] = useState(frontmatter.description);
+    const [title, setTitle] = useState('');
+    const [tag, setTag] = useState('');
+    const [description, setDescription] = useState('');
     const postDate = moment().format("DD/MM/YYYY HH:mm:ss")
-    const [content, setContent] = useState(post.content);
-    const [loading, setLoading] = useState(false);
-    const [delLoading, setDelLoading] = useState(false);
-    const srcPreview = frontmatter ? frontmatter.postImage : ""
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [content, setContent] = useState("");
+    const [loading, setLoading] = useState(false)
 
     const saveToCloud = async function* (data) {
         // Promise that waits for "time" milliseconds
@@ -80,20 +71,14 @@ export default function UpdatePost ({post, frontmatter}) {
 
     const handleSubmit = async function (event) {
         event.preventDefault();
-        setLoading(true);
-
         const preview = document.getElementById('previewImage');
 
-        let imageUrl = "";
-        if (preview.src.startsWith("data:image")) {
-            const imageCloud = await uploadImageToCloud(preview.src)
-            imageUrl = imageCloud ? imageCloud.url : ""
-        }
-        else {
-            imageUrl = frontmatter.postImage;
-        }
+        setLoading(true);
+        const imageCloud = preview.src.startsWith("https://res.cloudinary.com/") ?
+            await uploadImageToCloud(preview.src) : null
+        const imageUrl = imageCloud ? imageCloud.url : ""
 
-        const frontmatterUpdate = {
+        const frontmatter = {
             title: title,
             description: description,
             postImage: imageUrl,
@@ -101,53 +86,33 @@ export default function UpdatePost ({post, frontmatter}) {
             date: postDate
         }
 
-        const docId = post.slug;
-        await updatePost(docId, frontmatterUpdate, content)
-            .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id)
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-                setLoading(false);
-            })
+        const docId = title.replace(/\s/g, '-').toLowerCase() + "-" + uniqDocId;
 
-        toast.success("Cập nhật thành công")
-        setLoading(false);
-
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 5000)
-    }
-
-    const handleDeletePost = async function (event) {
-        event.preventDefault()
-        setDelLoading(true)
-        await deletePostByDoc(post.slug)
+        await uploadPost(docId, frontmatter, content)
             .then(function() {
-                console.log("Document successfully deleted!");
+                console.log("Document successfully written!")
                 setTitle('');
                 setContent('');
                 setTag('');
                 setDescription('');
                 clearFileInput()
-                toast.success("Xoá bài thành công")
-                setDelLoading(false)
-                handleClose()
+                toast.success("Đăng bài thành công")
+                setLoading(false);
                 router.push("/admin")
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
-                handleClose()
-                setDelLoading(false)
-            });
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+                toast.error("Opp! Something when wrong. Please try again!")
+                setLoading(false);
+            })
+
         setTimeout(() => {
-            handleClose()
-            setDelLoading(false)
-        }, 5000)
+            setLoading(false);
+        }, 10000)
     }
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO title="Create Post" />
             <div style={{paddingTop:'1rem'}}>
                 <div className="d-flex">
@@ -228,63 +193,26 @@ export default function UpdatePost ({post, frontmatter}) {
                                               name="postImage"
                                               onChange={previewFile}
                                               accept="image/*" />
-                                <img className="mt-1" id="previewImage" src={srcPreview} height="150px" alt="Image preview..."/>
+                                <img className="mt-1" id="previewImage" src="" height="150px" alt="Image preview..."/>
                                 <a href="#" onClick={clearFileInput}>Clear File</a>
                             </Form.Group>
 
-                            <div className="d-flex flex-row">
-                                <Button variant="outline-primary"
-                                        size="sm" className="mr-2"
-                                        type="submit"
-                                        disabled={loading}
-                                        onClick={handleSubmit}>
-                                    {
-                                        loading ?
-                                            <>
-                                                <Spinner className="mr-2" animation="grow" size="sm" /> Updating
-                                            </>
-                                            : <>Update</>
-                                    }
-                                </Button>
-                                <Button variant="outline-danger"
-                                        size="sm" className="mr-2"
-                                        onClick={handleShow}>
-                                    Delete
-                                </Button>
-                            </div>
+                            <Button variant="outline-primary"
+                                    size="sm" type="submit"
+                                    disabled={loading}
+                                    onClick={handleSubmit}>
+                                {
+                                    loading ?
+                                        <>
+                                            <Spinner className="mr-2" animation="grow" size="sm" /> Posting..
+                                        </>
+                                        : <>Public post</>
+                                }
+                            </Button>
                         </Form>
                     </div>
                 </div>
-                <Modal show={show} onHide={handleClose} centered>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Xoá bài viết</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        Bạn có chắc chắn muốn xoá bài viết: {title} ?
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" size="sm" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="danger" size="sm"
-                                disabled={delLoading}
-                                onClick={handleDeletePost}>
-                            {
-                                delLoading ?
-                                    <>
-                                        <Spinner className="mr-2" animation="grow" size="sm" /> Deleting..
-                                    </>
-                                    : <>Delete</>
-                            }
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
-        </Layout>
+        </TheLayout>
     )
-}
-
-export const getServerSideProps = async ({ query }) => {
-    const postData = await getDocBySlug(query.slug);
-    return { props: postData };
 }

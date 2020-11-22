@@ -1,19 +1,19 @@
-import Layout from 'components/Layout';
+import TheLayout from 'components/TheLayout';
 import React from 'react'
 import SEO from "components/Seo";
 import Bio from '../components/Bio'
 import Link from "next/link";
 import {Badge, Card, Col, Row} from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
-import {allPostFromFire} from "../utils/apiUtils";
+import Sidebar from "../components/Sidebar/Sidebar";
+import {allPostFromFire} from "../utils/api";
 
 export default function Home({allPosts}) {
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO title="Newest post"/>
-            <Row style={{paddingTop: '1.7rem'}}>
-                <Col xs='12' sm='9'>
+            <Row className="row-post">
+                <Col xs='12' sm='9' className="p-2">
                     <div className="d-flex mb-2">
                         <h5 className="pt-2 pr-2 mr-auto font-bold">Posts</h5>
                         <div className="p-2 font-bold">Feed</div>
@@ -43,7 +43,8 @@ export default function Home({allPosts}) {
                                                         </Link>
                                                     </h3>
                                                     <Badge variant="info">{tag}</Badge>{' | '}
-                                                    <span className="text-sm font-bold" style={{color: "#6C757D"}}>{date}</span>
+                                                    <span className="text-sm font-bold"
+                                                          style={{color: "#6C757D"}}>{date}</span>
                                                 </header>
                                                 <section>
                                                     <p className="text-md">{description}</p>
@@ -60,11 +61,11 @@ export default function Home({allPosts}) {
                         <Bio className="mt-8 mb-16"/>
                     </footer>
                 </Col>
-                <Col xs='12' sm='3'>
+                <Col xs='12' sm='3' className="p-2">
                     <Sidebar/>
                 </Col>
             </Row>
-        </Layout>
+        </TheLayout>
     )
 }
 

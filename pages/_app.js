@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import "typeface-open-sans";
 import "typeface-merriweather";
 
@@ -5,20 +6,21 @@ import "typeface-merriweather";
 import "styles/global.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "styles/sidebar.css";
-import '../styles/my-swiper.css';
-import 'swiper/swiper.scss';
 import "react-mde/lib/styles/css/react-mde-all.css";
 import 'react-toastify/dist/ReactToastify.css';
-
+import "nprogress/nprogress.css";
 import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-
 config.autoAddCss = false
 
-import React from "react";
-import {useEffect} from 'react'
 import {useRouter} from 'next/router'
 import * as gtag from '../lib/gtag'
+import dynamic from "next/dynamic";
+
+const TopProgressBar = dynamic(
+    () => {return import("../components/TopProgressBar")},
+    { ssr: false },
+);
 
 export default function App({Component, pageProps}) {
     const router = useRouter()
@@ -32,5 +34,8 @@ export default function App({Component, pageProps}) {
         }
     }, [router.events])
 
-    return <Component {...pageProps} />
+    return <>
+        <TopProgressBar />
+        <Component {...pageProps} />
+    </>
 }

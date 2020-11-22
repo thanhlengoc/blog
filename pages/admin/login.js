@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'
-import fireDb from "../../../conf/fire-config";
-import Layout from "../../../components/Layout";
-import SEO from "../../../components/Seo";
+import fireDb from "../../conf/fire-config";
+import TheLayout from "../../components/TheLayout";
+import SEO from "../../components/Seo";
 import {Card, Form, Button} from "react-bootstrap";
 import {toast} from "react-toastify";
 
-export default function Login () {
+function Login () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [notify, setNotification] = useState('');
@@ -31,7 +31,7 @@ export default function Login () {
     }
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO title="Login"/>
             <div className="d-flex justify-content-center mt-10">
                 <Card style={{ width: '36rem' }}>
@@ -66,6 +66,8 @@ export default function Login () {
                     </Card.Body>
                 </Card>
             </div>
-        </Layout>
+        </TheLayout>
     )
 }
+
+export default Login

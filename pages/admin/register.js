@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import fireDb from "../../../conf/fire-config";
-import Layout from "../../../components/Layout";
-import SEO from "../../../components/Seo";
+import fireDb from "../../conf/fire-config";
+import TheLayout from "../../components/TheLayout";
+import SEO from "../../components/Seo";
 import {Button, Card, Form} from "react-bootstrap";
 import {toast} from "react-toastify";
 
-export default function Register () {
+function Register () {
     const router = useRouter();
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -37,7 +37,7 @@ export default function Register () {
     }
 
     return (
-        <Layout>
+        <TheLayout>
             <SEO title="Register"/>
             <div className="d-flex justify-content-center mt-10">
                 <Card style={{ width: '36rem' }}>
@@ -76,6 +76,8 @@ export default function Register () {
                     </Card.Body>
                 </Card>
             </div>
-        </Layout>
+        </TheLayout>
     )
 }
+
+export default Register
