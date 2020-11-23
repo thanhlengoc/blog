@@ -43,11 +43,8 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         : null
                 }
                 <Col xs={windowSize.width <= 600 ? {order: "last"} : "12"} sm="8" className="p-2">
-                    <Card className="card-post">
-                        <Card.Header className="p-0">
-                            <Image src={frontmatter.postImage} alt="img-post"/>
-                        </Card.Header>
-                        <Card.Body>
+                    {
+                        windowSize.width <= 600 ?
                             <article>
                                 <header className="mb-8">
                                     <h1 className="mb-2 text-4xl font-black leading-none font-display">
@@ -66,14 +63,46 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                                     source={post.content}
                                     renderers={{code: CodeBlock, image: MarkdownImage, heading: HeadingRenderer}}
                                 />
+                                <hr className="mt-3 mb-3"/>
+                                <footer>
+                                    <Bio className="mt-8 mb-16"/>
+                                </footer>
                             </article>
-                        </Card.Body>
-                    </Card>
-                    <Card className="card-post mt-4">
-                        <Card.Body>
-                            <Bio className="mt-4 mb-4"/>
-                        </Card.Body>
-                    </Card>
+                            : <>
+                                <Card className="card-post">
+                                    <Card.Header className="p-0">
+                                        <Image src={frontmatter.postImage}
+                                               previewSrc={frontmatter.postImage} alt="img-post"/>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <article>
+                                            <header className="mb-8">
+                                                <h1 className="mb-2 text-4xl font-black leading-none font-display">
+                                                    {frontmatter.title}
+                                                </h1>
+                                                <div style={{display: 'flex'}}>
+                                                    <Badge className="mr-2" variant="warning"
+                                                           style={{height: 'fit-content'}}>{frontmatter.tag}</Badge>
+                                                    <p className="text-sm mr-2">Author: Admin</p>
+                                                    <p className="text-sm">{frontmatter.date}</p>
+                                                </div>
+                                            </header>
+                                            <ReactMarkdown
+                                                className="mb-4 prose-sm prose sm:prose lg:prose-lg"
+                                                escapeHtml={false}
+                                                source={post.content}
+                                                renderers={{code: CodeBlock, image: MarkdownImage, heading: HeadingRenderer}}
+                                            />
+                                        </article>
+                                    </Card.Body>
+                                </Card>
+                                <Card className="card-post mt-4">
+                                    <Card.Body>
+                                        <Bio className="mt-4 mb-4"/>
+                                    </Card.Body>
+                                </Card>
+                            </>
+                    }
                     <nav className="flex flex-wrap justify-between mb-10 mt-4">
                         {previousPost ? (
                             <Link href={"/posts/[slug]"} as={`/posts/${previousPost.slug}`}>
