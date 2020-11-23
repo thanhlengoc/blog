@@ -3,7 +3,8 @@ import "typeface-open-sans";
 import "typeface-merriweather";
 
 // import css
-import "styles/global.css";
+import "styles/tailwind.css"
+import "styles/global.scss";
 import "styles/darkmode.scss"
 import "styles/lightmode.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';

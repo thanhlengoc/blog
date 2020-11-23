@@ -25,6 +25,15 @@ const defaultSerif = [
 module.exports = {
   purge: ["./**/{pages,components,tailwind}/**/*.{js,jsx,ts,tsx,css}"],
   theme: {
+    prefix: 'tw-',
+    theme: {
+      screens: {
+        'sm': '576px',
+        'md': '768px',
+        'lg': '992px',
+        'xl': '1200px',
+      }
+    },
     extend: {
       colors: {
         "neon-orange": "#f92300",
