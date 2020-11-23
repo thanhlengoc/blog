@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown/with-html";
 import TheLayout from "components/TheLayout";
@@ -28,7 +28,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
             />
             <Row className="row-post">
                 {
-                    windowSize.width > 375 ?
+                    windowSize.width > 600 ?
                         <Col xs="12" sm='1' className="p-2">
                             <div className="reaction text-center">
                                 <AiOutlineLike className="emoji-react mb-3"/>
@@ -42,7 +42,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         </Col>
                         : null
                 }
-                <Col xs={windowSize.width <= 375 ? {order: "last"} : "12"} sm="8" className="p-2">
+                <Col xs={windowSize.width <= 600 ? {order: "last"} : "12"} sm="8" className="p-2">
                     <Card className="card-post">
                         <Card.Header className="p-0">
                             <Image src={frontmatter.postImage} alt="img-post"/>
@@ -105,7 +105,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         </div>
                     </footer>
                 </Col>
-                <Col xs={windowSize.width <= 375 ? {order: "first"} : "12"} sm="3" className="p-2">
+                <Col xs={windowSize.width <= 600 ? {order: "first"} : "12"} sm="3" className="p-2">
                     <Card className="toc card-post">
                         <Card.Body>
                             <h5>Table of contents</h5>
