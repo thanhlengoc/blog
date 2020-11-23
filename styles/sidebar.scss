@@ -1,0 +1,36 @@
+.sidenav {
+    position: sticky;
+    z-index: 1;
+    top: 6rem;
+    overflow-x: hidden;
+    a {
+        padding: 10px 0;
+        text-decoration: none;
+        display: block;
+        &:hover {
+            color: #064579;
+        }
+    }
+    h4 {
+        padding-bottom: 10px;
+        text-decoration: none;
+        display: block;
+    }
+}
+.toc {
+    position: sticky;
+    z-index: 1;
+    top: 5.5rem;
+    overflow-x: hidden;
+    .h5 {
+        margin-bottom: 15px;
+    }
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+        a {
+            font-size: 18px;
+        }
+    }
+}

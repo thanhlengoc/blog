@@ -3,11 +3,12 @@ import "typeface-open-sans";
 import "typeface-merriweather";
 
 // import css
-import "styles/global.css";
+import "styles/tailwind.css"
+import "styles/global.scss";
 import "styles/darkmode.scss"
 import "styles/lightmode.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "styles/sidebar.css";
+import "styles/sidebar.scss";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import 'react-toastify/dist/ReactToastify.css';
 import "nprogress/nprogress.css";

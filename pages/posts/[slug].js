@@ -15,24 +15,10 @@ import {AiOutlineLike, AiOutlineDislike, AiOutlineShareAlt} from "react-icons/ai
 import {HiOutlineDotsHorizontal} from "react-icons/hi"
 import Image from "../../components/Image/Image";
 import {HeadingRenderer} from "../../utils/helpers";
+import useWindowSize from "../../utils/useWindowSize";
 
 export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
-
-    // const [showReaction, setShowReaction] = useState(true)
-
-    // const previous = previousPost.frontmatter.title && previousPost.frontmatter.title.length >= 25 ?
-    //                     previousPost.frontmatter.title.substring(0, 21) + "..." : previousPost.frontmatter.title
-    //
-    // const next = nextPost.frontmatter.title && nextPost.frontmatter.title.length >= 25 ?
-    //     nextPost.frontmatter.title.substring(0, 21) + "..." : nextPost.frontmatter.title
-
-    // useEffect(() => {
-    //     console.log("window.innerWidth", window.innerWidth);
-    //     if (window.innerWidth < 500) {
-    //         setShowReaction(false)
-    //     }
-    // }, [])
-
+    const windowSize = useWindowSize();
 
     return (
         <TheLayout>
@@ -42,9 +28,9 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
             />
             <Row className="row-post">
                 {
-                    // showReaction ?
-                        <Col xs="12" sm='1' className="text-center p-2">
-                            <div className="reaction">
+                    windowSize.width > 375 ?
+                        <Col xs="12" sm='1' className="p-2">
+                            <div className="reaction text-center">
                                 <AiOutlineLike className="emoji-react mb-3"/>
                                 <p>0</p>
                                 <AiOutlineDislike className="emoji-react mb-3"/>
@@ -54,9 +40,9 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                                 <HiOutlineDotsHorizontal className="emoji-react mb-3"/>
                             </div>
                         </Col>
-                        // : null
+                        : null
                 }
-                <Col xs="12" sm="8" className="p-2">
+                <Col xs={windowSize.width <= 375 ? {order: "last"} : "12"} sm="8" className="p-2">
                     <Card className="card-post">
                         <Card.Header className="p-0">
                             <Image src={frontmatter.postImage} alt="img-post"/>
@@ -119,7 +105,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         </div>
                     </footer>
                 </Col>
-                <Col xs="12" sm="3" className="p-2">
+                <Col xs={windowSize.width <= 375 ? {order: "first"} : "12"} sm="3" className="p-2">
                     <Card className="toc card-post">
                         <Card.Body>
                             <h5>Table of contents</h5>

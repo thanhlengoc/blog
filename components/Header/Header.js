@@ -8,15 +8,16 @@ const Header = () => {
 
     return (
         <Navbar className="header" expand="lg" sticky="top">
-            <div className="container mx-auto ">
+            <div className="container mx-auto">
                 <Navbar.Brand className="navbar-brand" href="/getting-started">LNT</Navbar.Brand>
+                <FormControl type="text" placeholder="Search.." className="feedback"/>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <FiMenu className="btn-menu"/>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <hr className="mt-3 mb-2"/>
                     <Nav className="mr-auto">
-                        <FormControl type="text" placeholder="Search.." className="feedback"/>
+                        {/*<FormControl type="text" placeholder="Search.." className="feedback"/>*/}
                     </Nav>
                     <Link href="/">
                         <a  className="header-link font-bold font-light">Posts</a>

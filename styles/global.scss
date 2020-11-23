@@ -1,0 +1,92 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 348px) and (max-width: 575px) {
+    .feedback {
+        max-width: 200px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media screen and (min-width: 576px) {
+    .feedback {
+        max-width: 250px;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: 768px) {
+    .feedback {
+        max-width: 300px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media screen and (min-width: 992px) {
+    .feedback {
+        max-width: 350px;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media screen and (min-width: 1200px) {
+    .feedback {
+        max-width: 400px;
+    }
+}
+
+#nprogress {
+    .bar {
+        height: 3px !important;
+        background: #f48024 !important;
+    }
+    .peg {
+        box-shadow: 0 0 10px #f48024, 0 0 5px #f48024 !important;
+    }
+}
+span {
+    border-radius: 5px;
+}
+.emoji-react {
+    width: 2rem !important;
+    height: 2rem !important;
+    opacity: 0.5;
+    margin: 0 15px;
+    &:hover {
+        opacity: 1;
+    }
+}
+.scrollTop {
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    justify-content: end;
+    z-index: 1000;
+    cursor: pointer;
+    animation: fadeIn 0.3s;
+    transition: opacity 0.4s;
+    opacity: 0.5;
+    &:hover {
+        opacity: 1;
+    }
+}
+.reaction {
+    position: sticky;
+    top: 170px;
+}
+.toc-custom {
+    >ul {
+        >li {
+            >a {
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+.row-post {
+    padding-top: 1.5rem;
+}
