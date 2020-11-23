@@ -22,6 +22,7 @@ body.dark-mode {
     margin: 5px 20px 5px 0;
     &:hover {
       color: #f48024;
+      background-color: #25292F;
     }
   }
   .title-post {
@@ -119,6 +120,23 @@ body.dark-mode {
     outline: none;
     &:hover {
       color: #f48024;
+    }
+  }
+  .feed-menu {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none !important;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 20px;
+    &:hover {
+      background-color: #25292F;
+    }
+    &:active {
+      //border-bottom: 3px solid #3C4ADF;
     }
   }
 }

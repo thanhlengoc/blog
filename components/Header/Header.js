@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <Navbar className="header" expand="lg" sticky="top">
-            <div className="container mx-auto">
+            <div className="container-sm mx-auto">
                 <Navbar.Brand className="navbar-brand" href="/getting-started">LNT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <FiMenu className="btn-menu"/>
@@ -19,7 +19,7 @@ const Header = () => {
                         <FormControl type="text" placeholder="Search.." className="feedback"/>
                     </Nav>
                     <Link href="/">
-                        <a  className="header-link font-bold font-light">Posts</a>
+                        <a  className="header-link font-bold font-light">Newest</a>
                     </Link>
                     <Link href="/admin">
                         <a className="header-link font-bold font-light">Admin</a>

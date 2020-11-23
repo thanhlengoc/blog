@@ -18,11 +18,14 @@ body.light-mode {
     }
   }
   .header-link {
-    color: #000;
+    color: #363d44;
     margin: 5px 20px 5px 0;
     text-decoration: none !important;
+    padding: 8px;
+    border-radius: 5px;
     &:hover {
       color: #3C4ADF;
+      background-color: rgba(8, 9, 10, 0.05);
     }
   }
   .title-post {
@@ -112,6 +115,24 @@ body.light-mode {
     outline: none;
     &:hover {
       color: #3C4ADF;
+    }
+  }
+  .feed-menu {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    color: #363d44;
+    text-decoration: none !important;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 20px;
+    &:hover {
+      color: #3C4ADF;
+      background-color: rgba(8, 9, 10, 0.05);
+    }
+    &:active {
+      //border-bottom: 3px solid #3C4ADF;
     }
   }
 }

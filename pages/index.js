@@ -15,11 +15,21 @@ export default function Home({allPosts}) {
             <Row className="row-post">
                 <Col xs='12' sm='9' className="p-2">
                     <div className="d-flex mb-2">
-                        <h5 className="pt-2 pr-2 mr-auto font-bold">Posts</h5>
-                        <div className="p-2 font-bold">Feed</div>
-                        <div className="p-2 ">Week</div>
-                        <div className="p-2 ">Month</div>
-                        <div className="pt-2 pl-2 pb-2">Year</div>
+                        <Link href="/">
+                            <a className="text-xl mr-auto font-bold title-post">Posts</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="feed-menu">Feed</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="feed-menu">Week</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="feed-menu">Month</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="feed-menu">Year</a>
+                        </Link>
                     </div>
                     {
                         allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
@@ -35,8 +45,7 @@ export default function Home({allPosts}) {
                                                     <h3 className="mb-2">
                                                         <Link
                                                             href={`/posts/[slug]`}
-                                                            as={`/posts/${slug}`}
-                                                        >
+                                                            as={`/posts/${slug}`}>
                                                             <a className="text-xl font-bold font-display title-post">
                                                                 {title}
                                                             </a>

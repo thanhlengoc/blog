@@ -13,7 +13,7 @@ export default function TheLayout({children}) {
     return (
         <div className="app">
             <Header/>
-            <div className="container pt-0 px-4 py-12 mx-auto font-light">
+            <div className="container-sm pt-0 px-4 py-12 mx-auto font-light">
                 <main>{children}</main>
             </div>
             <ScrollToTop/>
