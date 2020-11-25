@@ -4,9 +4,9 @@ import Image from "./Image";
 const MarkdownImage = ({ alt, src }) => (
     <Image
         alt={alt}
-        src={require(`../../content/assets/${src}`)}
-        webpSrc={require(`../../content/assets/${src}?webp`)}
-        previewSrc={require(`../../content/assets/${src}?lqip`)}
+        src={src}
+        webpSrc={`${src}?webp`}
+        previewSrc={`${src}?lqip`}
         className="w-full"
     />
 );

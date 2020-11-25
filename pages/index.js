@@ -19,7 +19,7 @@ export default function Home({allPosts}) {
                 <Col xs='12' sm='7' className="p-2">
                     <div className="d-flex mb-2">
                         <Link href="/">
-                            <a className="text-xl mr-auto font-bold title-post">Posts</a>
+                            <a className="text-xl mr-auto font-bold posts-title">Posts</a>
                         </Link>
                         <Link href="/">
                             <a className="feed-menu">Feed</a>

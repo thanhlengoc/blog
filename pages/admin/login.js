@@ -35,7 +35,7 @@ export default function Login () {
         <TheLayout>
             <SEO title="Login"/>
             <div className="d-flex justify-content-center mt-10">
-                <Card className="border-0 w-50">
+                <Card className="border-0 auth-form">
                     <Card.Body className="card-area">
                         {notify}
                         <Form onSubmit={handleLogin}>

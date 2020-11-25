@@ -43,7 +43,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         : null
                 }
                 <Col xs={windowSize.width <= 600 ? {order: "last"} : "12"} sm="8" className="p-2">
-                    <Card className="card-post">
+                    <Card className="card-post border-0">
                         <Card.Header className="p-0">
                             <Image src={frontmatter.postImage}
                                    previewSrc={frontmatter.postImage} alt="img-post"/>

@@ -12,7 +12,7 @@ body.light-mode {
     box-shadow: 0 2px 6px 0 rgba(0,0,0,.12), inset 0 -1px 0 0 #dadce0;
   }
   a {
-    color: #007bff;
+    color: #3C4ADF;
     &:hover {
       color: #f92300;
     }
@@ -31,13 +31,22 @@ body.light-mode {
   .header-link-active {
     color: #3C4ADF;
   }
-  .title-post {
+  .posts-title {
     color: #000;
     padding: 5px;
+    border-radius: 5px;
     text-decoration: none !important;
     &:hover {
       color: #3C4ADF;
       background-color: rgba(8, 9, 10, 0.05);
+    }
+  }
+  .title-post {
+    color: #000;
+    //padding: 5px;
+    text-decoration: none !important;
+    &:hover {
+      color: #3C4ADF;
     }
   }
   .navbar-brand {
