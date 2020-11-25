@@ -8,14 +8,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngry, faGrinAlt, faSmileWink, faDizzy} from '@fortawesome/free-solid-svg-icons'
 import {Badge, Card, Col, Row} from "react-bootstrap";
 import CodeBlock from "../../components/Post/CodeBlock";
-import MarkdownImage from "../../components/Image/MarkdownImage";
+// import MarkdownImage from "../../components/Image/MarkdownImage";
 import Toc from 'react-toc'
 import {getPostBySlug} from "../../utils/api";
 import {AiOutlineLike, AiOutlineDislike, AiOutlineShareAlt} from "react-icons/ai";
 import {HiOutlineDotsHorizontal} from "react-icons/hi"
-import Image from "../../components/Image/Image";
 import {HeadingRenderer} from "../../utils/helpers";
 import useWindowSize from "../../utils/useWindowSize";
+import MarkdownImageCloud from "../../components/Image/MarkdownImageCloud";
 
 export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
     const windowSize = useWindowSize();
@@ -64,7 +64,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                                     className="mb-4 prose-sm prose sm:prose lg:prose-lg"
                                     escapeHtml={false}
                                     source={post.content}
-                                    renderers={{code: CodeBlock, image: MarkdownImage, heading: HeadingRenderer}}
+                                    renderers={{code: CodeBlock, image: MarkdownImageCloud, heading: HeadingRenderer}}
                                 />
                             </article>
                         </Card.Body>
