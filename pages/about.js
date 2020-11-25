@@ -3,8 +3,8 @@ import Bio from '../components/Bio'
 import TheLayout from '../components/TheLayout'
 import SEO from "../components/Seo";
 
-export default function GettingStarted () {
-
+export default function About () {
+    console.log("about page isServer: ", typeof window === 'undefined')
     return (
         <TheLayout>
             <SEO title="Getting Started" />

@@ -2,14 +2,14 @@ import React from 'react'
 import {Navbar, Form, FormControl, Nav} from 'react-bootstrap'
 import DarkModeToggle from "./DarkModeToggle";
 import {FiMenu} from 'react-icons/fi';
-import Link from "next/link";
+import ActLink from "../ActLink";
 
 const Header = () => {
 
     return (
         <Navbar className="header" expand="lg" sticky="top">
             <div className="container-sm mx-auto">
-                <Navbar.Brand className="navbar-brand" href="/getting-started">LNT</Navbar.Brand>
+                <Navbar.Brand className="navbar-brand" href="/">LNT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <FiMenu className="btn-menu"/>
                 </Navbar.Toggle>
@@ -18,12 +18,15 @@ const Header = () => {
                     <Nav className="mr-auto">
                         <FormControl type="text" placeholder="Search.." className="feedback"/>
                     </Nav>
-                    <Link href="/">
-                        <a  className="header-link font-bold font-light">Newest</a>
-                    </Link>
-                    <Link href="/admin">
-                        <a className="header-link font-bold font-light">Admin</a>
-                    </Link>
+                    <ActLink href="/">
+                        <a  className="header-link">Newest</a>
+                    </ActLink>
+                    <ActLink href="/admin">
+                        <a className="header-link">Admin</a>
+                    </ActLink>
+                    <ActLink href="/about">
+                        <a className="header-link">About</a>
+                    </ActLink>
                     <DarkModeToggle />
                 </Navbar.Collapse>
             </div>

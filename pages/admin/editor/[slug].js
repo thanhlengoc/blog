@@ -174,13 +174,13 @@ export default function UpdatePost ({post, frontmatter}) {
                             loadSuggestions={loadSuggestions}
                             childProps={{
                                 writeButton: {
-                                    style: {padding: '5px', color: '#000'}
+                                    style: {padding: '5px'}
                                 },
                                 previewButton: {
-                                    style: {padding: '5px', color: '#000'}
+                                    style: {padding: '5px'}
                                 },
                                 textArea: {
-                                    style: {background: '#E1EFF1', minHeight: "500px", color: '#000'}
+                                    style: {minHeight: "500px"}
                                 }
                             }}
                             paste={{saveImage: saveToCloud}}

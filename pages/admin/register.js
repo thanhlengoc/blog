@@ -40,7 +40,7 @@ function Register () {
         <TheLayout>
             <SEO title="Register"/>
             <div className="d-flex justify-content-center mt-10">
-                <Card style={{ width: '36rem' }}>
+                <Card className="border-0 w-50">
                     <Card.Body className="card-area">
                         {notification}
                         <Form onSubmit={handleLogin}>

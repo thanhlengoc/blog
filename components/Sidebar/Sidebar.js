@@ -9,25 +9,18 @@ const Sidebar = () => {
     return (
         <Card className="sidenav card-post">
             <Card.Body>
-                {/*<h5>Tìm kiếm</h5>*/}
-                {/*<Form.Control*/}
-                {/*    className="input-search mr-sm-2"*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Search.."*/}
-                {/*/>*/}
-                {/*<hr className="mt-3 mb-3"/>*/}
-                <h5>Tags</h5>
+                <h5>Popular Tags</h5>
                 <a href="/" className={currentPath === "/web-dev" ? "font-bold" : ""}>
-                    Front-end
+                    #front-end
                 </a>
                 <a href="/" className={currentPath === "/web-dev" ? "font-bold" : ""}>
-                    Java
+                    #Java
                 </a>
                 <a href="/" className={currentPath === "/web-dev" ? "font-bold" : ""}>
-                    Docker
+                    #docker
                 </a>
                 <a href="/" className={currentPath === "/distributed" ? "font-bold" : ""}>
-                    Distributed
+                    #distributed
                 </a>
             </Card.Body>
         </Card>

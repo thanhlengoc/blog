@@ -3,7 +3,6 @@ html {
 }
 #nprogress {
   .bar {
-    height: 3px !important;
     background: #f48024 !important;
   }
   .peg {
@@ -42,16 +41,25 @@ span {
 .reaction {
   position: sticky;
   top: 170px;
-}
-.toc-custom {
-  >ul {
-    >li {
-      >a {
-        padding-bottom: 10px;
-      }
-    }
-  }
+  display: grid;
+  justify-content: center;
 }
 .row-post {
   padding-top: 1.5rem;
+}
+
+.parentSyntax {
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  color: #fff;
+  right: 15px;
+  top: 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  &:hover {
+    color: #f48024;
+  }
 }

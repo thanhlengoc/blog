@@ -14,13 +14,13 @@ app.prepare().then(() => {
         return app.render(req, res, '/admin', req.query)
     })
 
-    server.get('/admin/login', (req, res) => {
-        return app.render(req, res, '/admin/login', req.query)
-    })
-
-    server.get('/admin/register', (req, res) => {
-        return app.render(req, res, '/admin/register', req.query)
-    })
+    // server.get('/admin/login', (req, res) => {
+    //     return app.render(req, res, '/admin/login', req.query)
+    // })
+    //
+    // server.get('/admin/register', (req, res) => {
+    //     return app.render(req, res, '/admin/register', req.query)
+    // })
 
     server.get('/posts/:slug', (req, res) => {
         return app.render(req, res, '/posts', {slug: req.params.slug})

@@ -4,14 +4,16 @@ import SEO from "../../components/Seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import {Badge, Col, Row, Button} from "react-bootstrap";
+import {Badge, Col, Row, Button, Spinner} from "react-bootstrap";
 import fireDb from "../../conf/fire-config";
 import {toast} from "react-toastify";
 import {allPostFromFire, onLogout} from "../../utils/api";
 
 export default function Admin({allPosts}) {
+    console.log("admin page isServer: ", typeof window === 'undefined')
     const [loggedIn, setLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [loading, setLoading] = useState(true);
 
     fireDb.auth()
         .onAuthStateChanged((user) => {
@@ -19,14 +21,18 @@ export default function Admin({allPosts}) {
                 console.log("user: ", user.email)
                 setUserEmail(user.email)
                 setLoggedIn(true)
+                setLoading(false)
             } else {
                 setLoggedIn(false)
+                setLoading(false)
             }
         })
 
     const handleLogout = () => {
+        setLoading(true)
         onLogout().then(() => {
             toast.success("Đăng xuất thành công.")
+            setLoading(false)
         });
     }
 
@@ -36,18 +42,23 @@ export default function Admin({allPosts}) {
             {
                 loggedIn ?
                     <div className="pt-4">
-                        <div className="d-flex">
-                            <p className="font-bold mr-auto">Posts by: {userEmail}</p>
-                            <Link href="/admin/new-post">
-                                <a className="mr-2">
-                                    <FontAwesomeIcon icon={faPlus}/> New Post
-                                </a>
-                            </Link>
-                             |
-                            <Button size="sm" className="ml-2" onClick={handleLogout}>
-                                <FontAwesomeIcon icon={faSignOutAlt}/> Logout
-                            </Button>
-                        </div>
+                        {
+                            loading ? <>
+                                <Spinner className="mr-2" animation="grow" size="sm" /> Loading..
+                            </>
+                            :
+                                <div className="d-flex">
+                                    <p className="font-bold mr-auto">Posts by: {userEmail}</p>
+                                    <Link href="/admin/new-post">
+                                        <Button size="sm" className="mr-2">
+                                            <FontAwesomeIcon icon={faPlus}/> New Post
+                                        </Button>
+                                    </Link>
+                                    <Button size="sm" className="ml-2" onClick={handleLogout}>
+                                        <FontAwesomeIcon icon={faSignOutAlt}/> Logout
+                                    </Button>
+                                </div>
+                        }
                         <hr className="mt-3 mb-3"/>
                         <Row>
                             <Col xs='12' sm='12'>
@@ -82,10 +93,10 @@ export default function Admin({allPosts}) {
                     </div>
                     :
                     <div className="d-flex justify-content-end pt-4">
-                        <Link href="/admin/login">
+                        <Link href='/admin/login' shallow={true}>
                             <a className="mr-2" style={{fontSize: '18px'}}> Login</a>
                         </Link> |
-                        <Link href="/admin/register">
+                        <Link href="/admin/register" shallow={true}>
                             <a className="ml-2" style={{fontSize: '18px'}}> Register</a>
                         </Link>
                     </div>

@@ -6,11 +6,12 @@ import SEO from "../../components/Seo";
 import {Card, Form, Button} from "react-bootstrap";
 import {toast} from "react-toastify";
 
-function Login () {
+export default function Login () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [notify, setNotification] = useState('');
     const router = useRouter();
+    console.log("login isServer: ", typeof window === 'undefined')
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -34,7 +35,7 @@ function Login () {
         <TheLayout>
             <SEO title="Login"/>
             <div className="d-flex justify-content-center mt-10">
-                <Card style={{ width: '36rem' }}>
+                <Card className="border-0 w-50">
                     <Card.Body className="card-area">
                         {notify}
                         <Form onSubmit={handleLogin}>
@@ -69,5 +70,3 @@ function Login () {
         </TheLayout>
     )
 }
-
-export default Login

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-// import {FaArrowCircleUp} from 'react-icons/fa';
 import {CgArrowUpR} from 'react-icons/cg';
 
 const ScrollTopArrow = () => {

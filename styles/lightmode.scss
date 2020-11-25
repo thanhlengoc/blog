@@ -28,11 +28,16 @@ body.light-mode {
       background-color: rgba(8, 9, 10, 0.05);
     }
   }
+  .header-link-active {
+    color: #3C4ADF;
+  }
   .title-post {
     color: #000;
+    padding: 5px;
     text-decoration: none !important;
     &:hover {
       color: #3C4ADF;
+      background-color: rgba(8, 9, 10, 0.05);
     }
   }
   .navbar-brand {
@@ -42,11 +47,11 @@ body.light-mode {
     border-radius: 3px;
     margin-right: 0.5rem;
     &:hover {
-      color: #3C4ADF;
+      color: #f48024;
     }
   }
   .feedback {
-    color: #000;
+    color: #363d44;
     max-width: 300px;
     min-width: 270px;
     background-color: #F9FAFA;
@@ -106,7 +111,7 @@ body.light-mode {
     background-color: #fff;
   }
   .btn-dark-mode {
-    background-color: #E1EFF1;
+    background-color: rgba(8, 9, 10, 0.05);
     color: #000;
     padding: 10px;
     border-radius: 7px;
@@ -126,13 +131,89 @@ body.light-mode {
     text-decoration: none !important;
     border-radius: 5px;
     padding: 8px;
-    margin-left: 20px;
+    margin-left: 15px;
     &:hover {
       color: #3C4ADF;
       background-color: rgba(8, 9, 10, 0.05);
     }
     &:active {
       //border-bottom: 3px solid #3C4ADF;
+    }
+  }
+  .react-sidebar {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #363d44;
+    padding: 5px;
+    border-radius: 5px;
+    &:hover {
+      color: #3C4ADF;
+      background-color: rgba(8, 9, 10, 0.05);
+    }
+  }
+  .tag-post {
+    font-size: 14px;
+    color: #363d44;
+    font-weight: 500;
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .toc-custom {
+    ul {
+      li {
+        margin-bottom: 5px;
+        a {
+          color: #363d44;
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+      ul {
+        li {
+          padding-left: 15px;
+          margin-bottom: 5px;
+          a {
+            color: #363d44;
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
+        ul {
+          li {
+            padding-left: 15px;
+            margin-bottom: 5px;
+            a {
+              color: #363d44;
+              font-size: 15px;
+              font-weight: 500;
+            }
+          }
+          ul {
+            li {
+              padding-left: 15px;
+              margin-bottom: 5px;
+              a {
+                color: #363d44;
+                font-size: 15px;
+                font-weight: 500;
+              }
+            }
+            ul {
+              li {
+                padding-left: 15px;
+                margin-bottom: 5px;
+                a {
+                  color: #363d44;
+                  font-size: 15px;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
