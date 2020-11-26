@@ -1,13 +1,29 @@
 import TheLayout from 'components/TheLayout';
-import React from 'react'
+import React, {useState} from 'react'
 import SEO from "components/Seo";
 import Bio from '../components/Bio'
 import Link from "next/link";
 import {Card, Col, Row} from "react-bootstrap";
 import Sidebar from "../components/Sidebar/Sidebar";
 import {allPostFromFire} from "../utils/api";
+import useWindowSize from "../utils/useWindowSize";
+import {useRouter} from "next/router";
+
+const selectOptions = [
+    { value: '/', label: 'Feed' },
+    { value: '/', label: 'Week' },
+    { value: '/', label: 'Month' },
+    { value: '/', label: 'Year' },
+]
 
 export default function Home({allPosts}) {
+    const router = useRouter();
+    const windowSize = useWindowSize();
+
+    const onchangeSelect = (e) => {
+        e.preventDefault();
+        router.push(e.target.value)
+    }
 
     return (
         <TheLayout>
@@ -21,18 +37,32 @@ export default function Home({allPosts}) {
                         <Link href="/">
                             <a className="text-xl mr-auto font-bold posts-title">Posts</a>
                         </Link>
-                        <Link href="/">
-                            <a className="feed-menu">Feed</a>
-                        </Link>
-                        <Link href="/">
-                            <a className="feed-menu">Week</a>
-                        </Link>
-                        <Link href="/">
-                            <a className="feed-menu">Month</a>
-                        </Link>
-                        <Link href="/">
-                            <a className="feed-menu">Year</a>
-                        </Link>
+                        {
+                            windowSize.width > 600 ?
+                                <>
+                                    <Link href="/">
+                                        <a className="feed-menu">Feed</a>
+                                    </Link>
+                                    <Link href="/">
+                                        <a className="feed-menu">Week</a>
+                                    </Link>
+                                    <Link href="/">
+                                        <a className="feed-menu">Month</a>
+                                    </Link>
+                                    <Link href="/">
+                                        <a className="feed-menu">Year</a>
+                                    </Link>
+                                </>
+                                :
+                                <select id="select-options" className="selected-news"
+                                        onChange={onchangeSelect}>
+                                    {
+                                        selectOptions.map((item, id) => {
+                                            return <option value={item.value} key={id}>{item.label}</option>
+                                        })
+                                    }
+                                </select>
+                        }
                     </div>
                     {
                         allPosts.map(({frontmatter: {title, description, postImage, tag, date}, slug}) => (
@@ -62,11 +92,6 @@ export default function Home({allPosts}) {
                                                 </section>
                                             </div>
                                         </div>
-                                        {/*<div className="row">*/}
-                                        {/*    <div className="col-sm-12">*/}
-                                        {/*        <p className="text-md mt-1 mb-2">{description}...</p>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
                                     </article>
                                 </Card.Body>
                             </Card>
