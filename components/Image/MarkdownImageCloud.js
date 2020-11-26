@@ -1,10 +1,10 @@
 import React from 'react'
-import {Image} from "react-bootstrap";
-// import Image from 'next/image'
 
-const MarkdownImageCloud = ({ alt, src }) => {
+const MarkdownImageCloud = ({alt, src}) => {
     return (
-        <Image src={src} alt={alt} unsized/>
+        <img src={src}
+             alt={alt}
+             className='lazyload blur-up'/>
     )
 }
 

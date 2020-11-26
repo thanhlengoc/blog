@@ -8,14 +8,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngry, faGrinAlt, faSmileWink, faDizzy} from '@fortawesome/free-solid-svg-icons'
 import {Badge, Card, Col, Row} from "react-bootstrap";
 import CodeBlock from "../../components/Post/CodeBlock";
-// import MarkdownImage from "../../components/Image/MarkdownImage";
+import MarkdownImage from "../../components/Image/MarkdownImage";
 import Toc from 'react-toc'
 import {getPostBySlug} from "../../utils/api";
 import {AiOutlineLike, AiOutlineDislike, AiOutlineShareAlt} from "react-icons/ai";
 import {HiOutlineDotsHorizontal} from "react-icons/hi"
 import {HeadingRenderer} from "../../utils/helpers";
 import useWindowSize from "../../utils/useWindowSize";
-import MarkdownImageCloud from "../../components/Image/MarkdownImageCloud";
+// import MarkdownImageCloud from "../../components/Image/MarkdownImageCloud";
 
 export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
     const windowSize = useWindowSize();
@@ -64,7 +64,7 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                                     className="mb-4 prose-sm prose sm:prose lg:prose-lg"
                                     escapeHtml={false}
                                     source={post.content}
-                                    renderers={{code: CodeBlock, image: MarkdownImageCloud, heading: HeadingRenderer}}
+                                    renderers={{code: CodeBlock, image: MarkdownImage, heading: HeadingRenderer}}
                                 />
                             </article>
                         </Card.Body>
@@ -105,17 +105,11 @@ export default function PostSlug({post, frontmatter, nextPost, previousPost}) {
                         </div>
                     </footer>
                 </Col>
-                <Col xs={windowSize.width <= 600 ? {order: "first"} : "12"} sm="3" className="p-4">
+                <Col xs={windowSize.width <= 600 ? {order: "first"} : "12"} sm="3" className="px-4 py-2">
                     <div className="toc">
-                        <h5>Table of contents</h5>
+                        <p className="text-md font-bold">Table of contents</p>
                         <Toc markdownText={post.content} className="toc-custom"/>
                     </div>
-                    {/*<Card className="toc card-post">*/}
-                    {/*    <Card.Body>*/}
-                    {/*        <h5>Table of contents</h5>*/}
-                    {/*        <Toc markdownText={post.content} className="toc-custom"/>*/}
-                    {/*    </Card.Body>*/}
-                    {/*</Card>*/}
                 </Col>
             </Row>
 
