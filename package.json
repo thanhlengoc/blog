@@ -7,7 +7,10 @@
     "dev": "node server.js",
     "build": "next build",
     "export": "next build && next export",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -15,9 +18,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@loadable/component": "^5.14.1",
+    "@next/bundle-analyzer": "^10.0.3",
     "bootstrap": "^4.5.3",
     "cacheable-response": "^2.1.8",
     "clsx": "^1.1.1",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "firebase": "^8.0.2",
     "imagemin-mozjpeg": "^9.0.0",

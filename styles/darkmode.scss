@@ -1,3 +1,8 @@
+$dark-grey: #404040;
+$nc-blue: #00BDFC;
+$nc-bl-dark: #0093C4;
+$red: #FC3F00;
+
 /*-------------dark mode css-------------*/
 body.dark-mode {
   background-color: #141517;
@@ -252,5 +257,87 @@ body.dark-mode {
     border-radius: 5px;
     color: #fff;
     background-color: #1E2025;
+  }
+
+  // comment-box
+  .button-cmb {
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.75em; // 12px/16px
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+  .comment-form {
+    background-color: #141517;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+  .comment-form-fields {
+    margin-bottom: 0.25rem;
+    input, textarea {
+      width: 99%;
+      color: #fff;
+      background-color: #25292F;
+
+      &:focus {
+        color: #fff;
+        background-color: #25292F;
+        outline: none;
+        box-shadow: 0 4px 2px -2px $nc-bl-dark;
+      }
+    }
+    textarea {
+      font-style: italic;
+    }
+  }
+  .comment-form-actions {
+
+  }
+  .comment-count {
+    color: #d4d4d4;
+  }
+  #comment-reveal {
+    float: right;
+    background-color: $nc-blue;
+    color: #fff;
+  }
+  .comment {
+    border-top: 1px solid #2c303a;
+  }
+  .comment-body {
+    font-style: italic;
+    margin-left: 1rem;
+  }
+  .comment-footer {
+    margin-bottom: 1rem;
+  }
+  .comment-footer-delete {
+    padding: 0.2rem 0;
+    text-decoration: none;
+    color: #0093C4;
+
+    &:hover {
+      color: #f48024;
+      font-weight: bold;
+    }
+  }
+  .btn-subscribe {
+    padding: 0.5rem;
+    height: 35px;
+    line-height: 0;
+  }
+  .btn-post-comment {
+    background-color: #f48024;
   }
 }

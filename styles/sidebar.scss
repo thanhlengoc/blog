@@ -19,12 +19,11 @@
 }
 .toc {
     position: sticky;
+    padding: 0 10px;
     z-index: 1;
     top: 5rem;
     overflow-x: hidden;
-    .h5 {
-        margin-bottom: 15px;
-    }
+    border-left: 1px solid #999;
 }
 @media screen and (max-height: 450px) {
     .sidenav {

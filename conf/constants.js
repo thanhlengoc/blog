@@ -8,3 +8,5 @@ export const apiSecret = "0iBCymS-mN3-gnp-8GxrM2LpKg8";
 export const uniqDocId = Date.now()
 
 export const collectionId = "posts"
+
+export const breakpoint = 568;

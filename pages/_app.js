@@ -19,6 +19,7 @@ config.autoAddCss = false
 import {useRouter} from 'next/router'
 import * as gtag from '../lib/gtag'
 import dynamic from "next/dynamic";
+import ViewportProvider from "../components/ViewportProvider";
 
 const TopProgressBar = dynamic(
     () => {return import("../components/TopProgressBar")},
@@ -27,6 +28,8 @@ const TopProgressBar = dynamic(
 
 export default function App({Component, pageProps}) {
     const router = useRouter()
+
+    // For Google Search Console Detect
     useEffect(() => {
         const handleRouteChange = (url) => {
             gtag.pageview(url)
@@ -39,6 +42,8 @@ export default function App({Component, pageProps}) {
 
     return <>
         <TopProgressBar />
-        <Component {...pageProps} />
+        <ViewportProvider>
+            <Component {...pageProps} />
+        </ViewportProvider>
     </>
 }
