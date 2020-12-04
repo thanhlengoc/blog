@@ -23,7 +23,7 @@ const MobileHomePage = ( props ) => {
 
     return (
         <Row className="row-post">
-            <Col xs='12' sm='7' className="p-0">
+            <Col xs='12' sm='8' className="p-0">
                 <div className="d-flex mb-2 px-2">
                     <Link href="/">
                         <a className="text-xl mr-auto font-bold posts-title">Posts</a>
@@ -76,7 +76,7 @@ const MobileHomePage = ( props ) => {
                     <Bio className="mt-8 mb-10 px-2"/>
                 </footer>
             </Col>
-            <Col xs='12' sm='3' className="p-0">
+            <Col xs='12' sm='4' className="p-0">
                 <Sidebar/>
             </Col>
         </Row>

@@ -30,12 +30,12 @@ const TheDesktopContent = ( props ) => {
                 </div>
             </Col>
             <Col xs="12" sm="8" className="p-2">
-                <Card className="card-post border-0">
+                <Card className="card-post">
                     <Card.Header className="p-0">
                         <img src={frontmatter.postImage} alt="img-post"/>
                     </Card.Header>
                     <Card.Body className="p-0">
-                        <div className="p-4">
+                        <div className="py-6 px-12">
                             <article>
                                 <header className="mb-8">
                                     <h1 className="mb-2 text-4xl font-black leading-none font-display">

@@ -79,15 +79,18 @@ body.light-mode {
   }
   p {
     color: #000;
+    font-weight: 400;
   }
   ul {
     li {
       color: #000;
+      font-weight: 400;
     }
   }
   ol {
     li {
       color: #000;
+      font-weight: 400;
     }
   }
   h1 {
@@ -321,6 +324,10 @@ body.light-mode {
   }
   .btn-post-comment {
     background-color: rgba(8, 9, 10, 0.05);
+  }
+
+  .left-bar {
+    display: grid;
   }
 
 }

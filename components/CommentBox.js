@@ -48,7 +48,7 @@ const CommentBox = () => {
 
     if (showComments) {
         buttonText = 'Hide Comments';
-        commentNodes = <div className="comment-list">{_getComments()}</div>;
+        commentNodes = <div className="comment-list pt-2">{_getComments()}</div>;
     }
 
     return (

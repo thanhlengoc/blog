@@ -10,7 +10,21 @@ const DesktopHomePage = ( props ) => {
     return (
         <Row className="row-post">
             <Col xs='12' sm='2' className="p-2">
-                <p className="font-bold">SignIn / SignUp</p>
+                <div className="left-bar">
+                    <p className="font-weight-bold">SignIn / SignUp</p>
+                    <p>Listings</p>
+                    <p className="font-weight-bold mt-4">Popular tags</p>
+                    <p>#java</p>
+                    <p>#docker</p>
+                    <p>#prometheus</p>
+                    <p>#grafana</p>
+                    <p>#eureka</p>
+                    <p>#consul</p>
+                    <p>#reactjs</p>
+                    <p>#javascript</p>
+                    <p>#sql</p>
+                    <p>#kafka</p>
+                </div>
             </Col>
             <Col xs='12' sm='7' className="p-2">
                 <div className="d-flex mb-2">
